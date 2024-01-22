@@ -2,4 +2,4 @@
     return (
         <div>ErrorPage</div>
     )
-    }
+}
