@@ -1,4 +1,4 @@
-import Logo from "../../reusable-ui/Logo";
+import Logo from "/Users/valentingregorio/Documents/projects/crazee-burger/src/components/reusable-ui/logo";
 import LoginForm from "./LoginForm"
 import styled from "styled-components";
 
@@ -17,19 +17,16 @@ import styled from "styled-components";
         flex-direction: column;
         justify-content: center;
         align-items: center;
-
-        ::before{
-            content: "";
-            background: url("/images/F03 burger-and-fries-background.jpg") rgba(0, 0, 0, 0.7);
-            background-size: cover;
-            background-position: center;
-            background-blend-mode: darken;
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            z-index: -1;
-        }
-    `;
+        content: "";
+        background: url("/images/F03 burger-and-fries-background.jpg") rgba(0, 0, 0, 0.7);
+        background-size: cover;
+        background-position: center;
+        background-blend-mode: darken;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: -1;
+    `
     
