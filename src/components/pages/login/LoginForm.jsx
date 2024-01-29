@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom"
 import styled from 'styled-components'
 import { IoChevronForward } from "react-icons/io5";
 import { BsPersonCircle } from "react-icons/bs";
-import Input from './input';
+import TextInput from './TextInput';
 
 export default function LoginForm() {      
     const [inputValue, setInputValue] = useState("")
@@ -25,7 +25,7 @@ export default function LoginForm() {
     <h1>Bienvenue chez nous !</h1>
     <hr />
     <h2>Connectez-vous</h2>
-        <Input 
+        <TextInput 
             value={inputValue} 
             onChange={handleChange} 
             placeholder={"Entrez votre prénom"}
