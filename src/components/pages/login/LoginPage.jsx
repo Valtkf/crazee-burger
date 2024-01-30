@@ -1,4 +1,4 @@
-import Logo from "/Users/valentingregorio/Documents/projects/crazee-burger/src/components/reusable-ui/logo";
+import Logo from "../reusable-ui/Logo";
 import LoginForm from "./LoginForm"
 import styled from "styled-components";
 
