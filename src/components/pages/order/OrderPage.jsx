@@ -1,5 +1,7 @@
 import { Link, useParams } from "react-router-dom";
 import styled from "styled-components";
+import Navbar from "./Navbar";
+import Main from "./Main";
 
 
 
@@ -8,14 +10,8 @@ import styled from "styled-components";
         return (
             <OrderPageStyled>
                 <div className="container">
-                    <div className="navbar">
-                        Navbar
-                        <h1>Hey, {username}</h1>
-                        <Link to="/">
-                            <button>Déconnexion</button>
-                        </Link>
-                    </div>
-                    <div className="main">Main</div>
+                <Navbar username={username}/>
+                <Main />    
                 </div>
             </OrderPageStyled>
         )
@@ -34,15 +30,5 @@ import styled from "styled-components";
             width: 1400px;
             display: flex;
             flex-direction: column;
-
-            .navbar{
-                background: blue;
-                height: 10vh;
-            }
-
-            .main{
-                background: green;
-                flex: 1;
-            }
         }
     `;
