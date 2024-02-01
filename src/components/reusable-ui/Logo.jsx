@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import { theme } from "../theme";
 
-export default function Logo() {
+export default function Logo( { className, onClick } ) {
     return (
-        <LogoStyled> 
+        <LogoStyled className={className} onClick={onClick}> 
             <h1>CRAZEE</h1>
                 <img src="/images/F03 logo-orange.png" alt="logo-crazee-burger" />
             <h1>BURGER</h1>
@@ -15,7 +15,6 @@ const LogoStyled = styled.div`
     
     display: flex;
     align-items: center;
-    transform: scale(2.5);
 
     h1 {
         display: inline;
