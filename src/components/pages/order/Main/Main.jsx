@@ -1,13 +1,12 @@
 import styled from "styled-components";
 import { theme } from "../../../theme";
+import Menu from "./Menu";
 
 export default function Main() {
     return (
         <MainStyled className="main">
-            <div className="mainLeftSide">MainLeftSide</div>
-            <div className="mainRightSide"> MainRightSide
-                <div className="card">Card</div>
-            </div>
+            <div className="basket">Basket</div>
+            <Menu />    
         </MainStyled>
     )
 }
@@ -23,21 +22,7 @@ const MainStyled = styled.div`
     display: grid;
     grid-template-columns: 25% 1fr;
 
-    .mainLeftSide {
+    .basket {
         background: pink;
     }
-
-    .mainRightSide{
-        background: brown;
-    }
-
-    .card {
-        background: green;
-        width: 240px;
-        height: 330px;
-        margin-top: 50px;
-        margin-left: 50px;
-    }
-
-    
 `;
