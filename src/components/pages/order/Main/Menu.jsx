@@ -26,30 +26,4 @@ const MenuStyled = styled.div`
     grid-row-gap: 60px;
     padding: 50px 50px 150px;
     justify-items: center;
-
-    .produit {
-            background: green;
-            width: 240px;
-            height: 330px;
-            border-radius: ${theme.borderRadius.extraRound};
-            
-            
-
-            .image {
-                border: 1px solid pink;
-                width: 100px;
-                height: auto;
-                
-
-                img {
-                    width: 100%;
-                    height: 100%;
-                    object-fit: cover;
-                }
-            }
-
-            .description {
-                border: 1px solid pink;
-            }
-        }
 `;
