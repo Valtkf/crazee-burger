@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { fakeMenu2 } from "../../../../fakeData/fakeMenu.jsx"
 import { theme } from "../../../theme/index.jsx";
 import Product from "../../../reusable-ui/Product.jsx"
+import { formatPrice } from "../../../../utils/maths.jsx"
 
 
 
@@ -11,8 +12,15 @@ export default function Menu() {
 
     return (
         <MenuStyled className="menu">
-            {menu.map((produit) => {
-                return <Product title={produit.title} imageSource={produit.imageSource} price={produit.price} />
+            {menu.map(({id , title, imageSource, price }) => {
+                return (
+                    <Product
+                        key={id}
+                        title={title} 
+                        imageSource={imageSource} 
+                        leftDescription={formatPrice(price)} 
+                    />
+                )
             })}
         </MenuStyled>
     )

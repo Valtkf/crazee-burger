@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { theme } from "../theme";
 import PrimaryButton from "./PrimaryButton";
 
-export default function Product({ title, imageSource, price }) {
+export default function Product({ title, imageSource, leftDescription }) {
     return ( 
         <ProductStyled className="produit">
             <div className="image">
@@ -11,7 +11,7 @@ export default function Product({ title, imageSource, price }) {
             <div className="info-text">
                 <div className="title">{title}</div>
                 <div className="description">
-                    <div className="price">{price}</div>
+                    <div className="left-description">{leftDescription}</div>
                     <div className="right-description">
                         <PrimaryButton className="primary-button" label={"Ajouter"} />
                     </div>
@@ -32,8 +32,6 @@ const ProductStyled = styled.div`
             grid-template-rows: 65% 1fr;
             padding: 20px;
             padding-bottom: 10px;
-            
-            
 
             .image {
                 width: 100%;
@@ -48,12 +46,21 @@ const ProductStyled = styled.div`
             }
 
             .info-text {
-                padding: 0px 5px 0px 5px;
+                display: grid;
+                grid-template-rows: 30% 70%;
+                padding: 5px;
 
                 .title {
+                    margin: auto 0;
                     font-family: "Amatic SC", cursive;
                     font-weight: 700;
                     font-size: 36px;
+                    position: relative;
+                    width: 100%;
+                    overflow: hidden;
+                    text-align: left;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
                 }
 
                 .description {
@@ -61,10 +68,10 @@ const ProductStyled = styled.div`
                     justify-content: space-between;
                     width: 190px;
                     height: 38.5px;
-                    padding-top: 9px;
+                    padding-top: 19px;
                     padding-bottom: 19px;
 
-                    .price {
+                    .left-description {
                         color: ${theme.colors.primary};
                         font-weight: 400;
                         font-size: 16px;
