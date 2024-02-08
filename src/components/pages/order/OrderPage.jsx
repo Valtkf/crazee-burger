@@ -1,8 +1,8 @@
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
-import Navbar from "./Navbar";
-import Main from "./Main";
+import Main from "./Main/Main";
 import { theme } from "../../theme";
+import Navbar from "./Navbar/Navbar";
 
 
 
@@ -26,7 +26,6 @@ import { theme } from "../../theme";
         align-items: center;
 
         .container{
-            background: red;
             height: 95vh;
             width: 1400px;
             display: flex;
