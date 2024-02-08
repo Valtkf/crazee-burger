@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import { theme } from "../../../theme";
+import { theme } from "../theme";
+import PrimaryButton from "./PrimaryButton";
 
 export default function Product({ title, imageSource, price }) {
     return ( 
@@ -11,7 +12,9 @@ export default function Product({ title, imageSource, price }) {
                 <div className="title">{title}</div>
                 <div className="description">
                     <div className="price">{price}</div>
-                    <button className="add-button">Ajouter</button>
+                    <div className="right-description">
+                        <PrimaryButton className="primary-button" label={"Ajouter"} />
+                    </div>
                 </div>
             </div>
         </ProductStyled>
@@ -33,12 +36,10 @@ const ProductStyled = styled.div`
             
 
             .image {
-                border: 1px solid pink;
                 width: 100%;
                 height: auto;
                 margin-top: 30px;
                 
-
                 img {
                     width: 100%;
                     height: 100%;
@@ -48,7 +49,6 @@ const ProductStyled = styled.div`
 
             .info-text {
                 padding: 0px 5px 0px 5px;
-                border: 1px solid blue;
 
                 .title {
                     font-family: "Amatic SC", cursive;
@@ -57,26 +57,38 @@ const ProductStyled = styled.div`
                 }
 
                 .description {
-                    border: 1px solid red;
                     display: flex;
                     justify-content: space-between;
                     width: 190px;
                     height: 38.5px;
                     padding-top: 9px;
                     padding-bottom: 19px;
-                }
 
-                .add-button {
-                    width: 95px;
-                    height: 38px;
-                }
+                    .price {
+                        color: ${theme.colors.primary};
+                        font-weight: 400;
+                        font-size: 16px;
+                        padding: 10px 50px 22px 0px;
+                    }
 
-                .price {
-                    color: ${theme.colors.primary};
-                    font-weight: 400;
-                    font-size: 16px;
-                    padding: 10px 50px 22px 0px;
+                    .right-description {
+                        display: flex;
+                        justify-content: flex-end;
+                        align-items: center;
+
+                        .primary-button {
+                            font-size: ${theme.fonts.size.XS};
+                            width: 95px;
+                            height: 38px;
+                            cursor: pointer;
+                            
+                            &:active {
+                                color: white;
+                                background-color: #ff9f1b;
+                                border: 1px solid #ff9f1b;
+                            }
+                        }
+                    }
                 }
             }
-        
 `;
