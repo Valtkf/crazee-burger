@@ -26,7 +26,6 @@ import Navbar from "./Navbar/Navbar";
         align-items: center;
 
         .container{
-            background: red;
             height: 95vh;
             width: 1400px;
             display: flex;

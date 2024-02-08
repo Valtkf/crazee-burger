@@ -4,7 +4,7 @@ import PrimaryButton from "./PrimaryButton";
 
 export default function Product({ title, imageSource, leftDescription }) {
     return ( 
-        <ProductStyled className="produit">
+        <CardStyled className="produit">
             <div className="image">
                 <img src={imageSource} alt={title} />
             </div>
@@ -17,11 +17,11 @@ export default function Product({ title, imageSource, leftDescription }) {
                     </div>
                 </div>
             </div>
-        </ProductStyled>
+        </CardStyled>
     )
 }
 
-const ProductStyled = styled.div`
+const CardStyled = styled.div`
     
             background: white;
             box-shadow: -8px 8px 20px 0px rgb(0 0 0 / 20%);
@@ -53,8 +53,8 @@ const ProductStyled = styled.div`
                 .title {
                     margin: auto 0;
                     font-family: "Amatic SC", cursive;
-                    font-weight: 700;
-                    font-size: 36px;
+                    font-weight: ${theme.fonts.weights.bold};
+                    font-size: ${theme.fonts.size.P4};
                     position: relative;
                     width: 100%;
                     overflow: hidden;
@@ -73,7 +73,7 @@ const ProductStyled = styled.div`
 
                     .left-description {
                         color: ${theme.colors.primary};
-                        font-weight: 400;
+                        font-weight: ${theme.fonts.weights.regular};
                         font-size: 16px;
                         padding: 10px 50px 22px 0px;
                     }
