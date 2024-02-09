@@ -3,7 +3,8 @@ import NavbarRightSide from "./NavbarRightSide";
 import Logo from "../../../reusable-ui/Logo"
 import { theme } from "../../../theme";
 import { refreshPage } from "../../../../utils/window"
-import NavbarRightSideIncomplet from "./NavbarRightSideIncomplet";
+import "react-toastify/dist/ReactToastify.css"
+
 
 export default function Navbar({ username }) {
     return (
