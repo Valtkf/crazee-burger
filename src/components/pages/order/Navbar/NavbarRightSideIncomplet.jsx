@@ -1,13 +1,15 @@
 import React from "react"
 import "react-toastify/dist/ReactToastify.css"
-import { theme } from "../../../../theme"
-import { ToastContainer } from "react-toastify"
+import { theme } from "../../../theme"
+import { ToastContainer, toast } from "react-toastify"
 import styled from "styled-components"
 
 export default function NavbarRightSideIncomplet() {
+  const notify = () => toast ("Wow so easy!");
+
   return (
     <NavbarRightSideIncompletStyled>
-      <ToastContainer className="toaster" bodyClassName="body-toast" />
+        <ToastContainer className="toaster" bodyClassName="body-toast"/>
     </NavbarRightSideIncompletStyled>
   )
 }

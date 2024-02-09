@@ -5,7 +5,7 @@ import { theme } from "../../../theme"
 
 export default function Profile({ username }) {
   return (
-    <ProfileStyled>
+    <ProfileStyled >
       <div className="info">
         <p>
           Hey, <b>{username}</b>
@@ -28,6 +28,7 @@ const ProfileStyled = styled.div`
   align-items: center;
   justify-content: space-between;
   min-width: 100px;
+  padding-left: 50px;
 
   .info {
     text-align: right;
