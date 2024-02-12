@@ -6,7 +6,15 @@ export default function Main() {
     return (
         <MainStyled className="main">
             {/*<div className="basket">Basket</div>*/}
-            <Menu />    
+            <Menu />
+            <div className="adminPanel">Admin Pannel
+                <div className="adminTabs">Admin Tabs
+                    <button className='open-reduce'>open reduce</button>
+                    <button className="add-product">Add Product</button>
+                    <button className="modify-product">Modify Product</button>
+                </div>
+                <div className="adminPanelProduct">Admin Panel Product</div>
+            </div>    
         </MainStyled>
     )
 }
@@ -26,4 +34,23 @@ const MainStyled = styled.div`
     /*.basket {
         background: pink;
     }*/
+
+    .adminPanel {
+        border: 1px solid red;
+        height: 294.5px;
+        width: 1400px;
+    }
+
+    .adminTabs {
+        border: 1px solid blue;
+        width: 1400px;
+        height: 44px;
+    }
+
+    .adminPanelProduct {
+        border: 1px solid green;
+        width: 1400px;
+        height: 250px;
+    }
+
 `;
