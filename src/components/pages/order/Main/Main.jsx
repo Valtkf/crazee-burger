@@ -6,22 +6,19 @@ export default function Main() {
     return (
         <MainStyled className="main">
             {/*<div className="basket">Basket</div>*/}
-            <Menu />
-            <div className="adminPanel">Admin Pannel
-                <div className="adminTabs">Admin Tabs
-                    <button className='open-reduce'>open reduce</button>
-                    <button className="add-product">Add Product</button>
-                    <button className="modify-product">Modify Product</button>
-                </div>
-                <div className="adminPanelProduct">Admin Panel Product</div>
-            </div>    
+            <div className="menu-and-admin">
+                <Menu />
+                <div className="admin">Admon</div>
+            </div>
         </MainStyled>
     )
 }
 
 const MainStyled = styled.div`
+    border: 3px solid green;
     background: ${theme.colors.background_white};
     flex: 1;
+    height: calc(95vh - 10vh);
 
     border-bottom-left-radius: ${theme.borderRadius.extraRound};
     border-bottom-right-radius: ${theme.borderRadius.extraRound};
@@ -30,27 +27,25 @@ const MainStyled = styled.div`
     display: grid;
     grid-template-columns: 1fr;
 
-    overflow-y: scroll;
-    /*.basket {
+    
+     /*.basket {
         background: pink;
     }*/
 
-    .adminPanel {
-        border: 1px solid red;
-        height: 294.5px;
-        width: 1400px;
-    }
+    .menu-and-admin {
+        position: relative;
+        display: grid;
+        overflow: hidden;
+        border-bottom-left-radius: ${theme.borderRadius.extraRound};
+        border-bottom-right-radius: ${theme.borderRadius.extraRound};
 
-    .adminTabs {
-        border: 1px solid blue;
-        width: 1400px;
-        height: 44px;
-    }
-
-    .adminPanelProduct {
-        border: 1px solid green;
-        width: 1400px;
+        .admin {
+        background: red;
         height: 250px;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        }
     }
-
 `;
