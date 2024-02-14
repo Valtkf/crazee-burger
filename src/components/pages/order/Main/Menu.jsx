@@ -27,7 +27,6 @@ export default function Menu() {
 }
 
 const MenuStyled = styled.div`
-    border: 3px solid blue;
     background: ${theme.colors.background_white};
     box-shadow: -8px 8px 20px 0px rgb(0 0 0 / 20%) inset;
     display: grid;
