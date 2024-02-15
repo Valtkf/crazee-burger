@@ -10,7 +10,7 @@ export default function Navbar({ username }) {
     return (
         <NavbarStyled>
             <Logo className="logo-order-page" onClick={() => refreshPage()} />
-            <NavbarRightSide username={username} />  
+            <NavbarRightSide />  
         </NavbarStyled>
     )
 }
