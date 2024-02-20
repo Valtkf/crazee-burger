@@ -26,7 +26,6 @@ export default function NavbarRghtSide() {
         setIsModeAdmin(!isModeAdmin)
     }
 
-
     return (
         <NavbarRghtSideStyled className="right-side">
             <ToggleButton 
