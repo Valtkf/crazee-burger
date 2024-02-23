@@ -1,29 +1,47 @@
 import styled from "styled-components";
 import OrderContext from "../../../../context/OrderContext";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 
 export default function AddForm() {
     const {handleAdd} = useContext(OrderContext)
-
-    const newProduct = {
-        id : new Date().getMinutes(),
-        title: "Nouveau produit",
-        imageSource: "public/images/frites1.png",
-        price: 2.5,
-    }
+    
+    const [title, setTitle] = useState("")
+    const [imageSource, setImageSource] = useState("")
+    const [price, setPrice] = useState(0)
 
     const handleSubmit = (event) => { 
         event.preventDefault()
+
+        const newProduct = {
+            id : new Date().getMinutes(),
+            title: title,
+            imageSource: imageSource,
+            price: price,
+        }
+
         handleAdd(newProduct)
+        
+    }
+
+    const handleTitleChange = (event) => {
+        setTitle(event.target.value)
+    }
+
+    const handleImageChange = (event) => {
+        setImageSource(event.target.value)
+    }
+
+    const handlePriceChange = (event) => {
+        setPrice(event.target.value)
     }
 
     return (
         <AddFormStyled onSubmit={handleSubmit}>
-            <div className="image-preview">ImagePreview</div>
+            <div className="image-preview">Aucune image</div>
             <div className="input-fields">
-                <input type="text" placeholder="Nom" />
-                <input type="text" placeholder="Image URL" />
-                <input type="text" placeholder="Prix" />
+                <input value={title} type="text" placeholder="Nom" onChange={handleTitleChange}/>
+                <input value={imageSource} type="text" placeholder="Image URL" onChange={handleImageChange} />
+                <input value={price ? price : ""} type="text" placeholder="Prix" onChange={handlePriceChange}/>
             </div>
             <button className="submit-button">Submit Button</button>
         </AddFormStyled>

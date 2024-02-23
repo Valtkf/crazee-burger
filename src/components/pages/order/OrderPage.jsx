@@ -38,7 +38,6 @@ import { fakeMenu } from "../../../fakeData/fakeMenu.jsx";
             currentTabSelected, 
             setCurrentTabSelected,
             menu,
-            setMenu,
             handleAdd,
         }
         
