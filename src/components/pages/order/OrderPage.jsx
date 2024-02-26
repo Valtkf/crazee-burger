@@ -10,11 +10,11 @@ import { fakeMenu } from "../../../fakeData/fakeMenu.jsx";
     export default function OrderPage() {
         const { username } = useParams()
         const [isModeAdmin, setIsModeAdmin] = useState(true)
-        const [isCollapsed, setIsCollapsed] = useState(false)
+        const [isCollapsed, setIsCollapsed] = useState(true)
         const [isAddSelected, setIsAddSelected] = useState(true)
         const [isEditSelected, setIsEditSelected] = useState(false)
         const [currentTabSelected, setCurrentTabSelected] = useState("add")
-        const [menu, setMenu] = useState(fakeMenu.MEDIUM)
+        const [menu, setMenu] = useState(fakeMenu.EMPTY)
 
 
         const handleAdd = (newProduct) => {
@@ -32,6 +32,10 @@ import { fakeMenu } from "../../../fakeData/fakeMenu.jsx";
             setMenu(menuUpdated)
         }
 
+        const resetMenu = () => { 
+            setMenu(fakeMenu.MEDIUM)
+        }
+
         const orderContextValue = {
             isModeAdmin,
             setIsModeAdmin,
@@ -45,7 +49,8 @@ import { fakeMenu } from "../../../fakeData/fakeMenu.jsx";
             setCurrentTabSelected,
             menu,
             handleAdd,
-            handleDelete
+            handleDelete,
+            resetMenu,
         }
         
         return (
