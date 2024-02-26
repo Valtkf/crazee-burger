@@ -25,6 +25,12 @@ import { fakeMenu } from "../../../fakeData/fakeMenu.jsx";
             setMenu(menuUpdated)
         }
     
+        const handleDelete = (idOfProductToDelete) => { 
+            const menuCopy = [...menu]
+            const menuUpdated = menuCopy.filter((product) => product.id !== idOfProductToDelete)
+    
+            setMenu(menuUpdated)
+        }
 
         const orderContextValue = {
             isModeAdmin,
@@ -39,6 +45,7 @@ import { fakeMenu } from "../../../fakeData/fakeMenu.jsx";
             setCurrentTabSelected,
             menu,
             handleAdd,
+            handleDelete
         }
         
         return (
