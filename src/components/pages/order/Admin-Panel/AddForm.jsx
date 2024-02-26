@@ -7,7 +7,7 @@ const EMPTY_PRODUCT = {
     id: "",
     title: "",
     imageSource: "",
-    price: 14,
+    price: "",
 }
 
 export default function AddForm() {
