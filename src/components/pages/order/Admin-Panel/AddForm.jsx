@@ -18,9 +18,10 @@ export default function AddForm() {
         event.preventDefault()
         const newProductToAdd = {
             ...newProduct,
-            id : new Date().getTime(),
+            id : crypto.randomUUID,
         }
-        handleAdd(newProductToAdd)   
+        handleAdd(newProductToAdd)
+        setNewProduct(EMPTY_PRODUCT)
     }
 
     const handleChange = (event) => {
@@ -50,7 +51,7 @@ export default function AddForm() {
                     name="imageSource"
                     value={newProduct.imageSource} 
                     type="text" 
-                    placeholder="Image URL" 
+                    placeholder="Lien URL d'une image (ex: https://la-photo-de-mon-produit.png)" 
                     onChange={handleChange} 
                 />
                 <input 
