@@ -14,7 +14,7 @@ import { fakeMenu } from "../../../fakeData/fakeMenu.jsx";
         const [isAddSelected, setIsAddSelected] = useState(true)
         const [isEditSelected, setIsEditSelected] = useState(false)
         const [currentTabSelected, setCurrentTabSelected] = useState("add")
-        const [menu, setMenu] = useState(fakeMenu.EMPTY)
+        const [menu, setMenu] = useState(fakeMenu.SMALL)
 
 
         const handleAdd = (newProduct) => {
@@ -33,7 +33,7 @@ import { fakeMenu } from "../../../fakeData/fakeMenu.jsx";
         }
 
         const resetMenu = () => { 
-            setMenu(fakeMenu.MEDIUM)
+            setMenu(fakeMenu.SMALL)
         }
 
         const orderContextValue = {
