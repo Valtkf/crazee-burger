@@ -24,8 +24,7 @@ const InputStyled = styled.div`
             justify-content: center;
             align-items: center;
             font-size: ${theme.fonts.size.P0};
-            margin-left: 10px;
-            margin-right: 8px;
+            margin: 0 8px 0 10px;
             color: ${theme.colors.greySemiDark};
         }
 
