@@ -14,7 +14,7 @@ import { fakeMenu } from "../../../fakeData/fakeMenu.jsx";
         const [isAddSelected, setIsAddSelected] = useState(true)
         const [isEditSelected, setIsEditSelected] = useState(false)
         const [currentTabSelected, setCurrentTabSelected] = useState("add")
-        const [menu, setMenu] = useState(fakeMenu.SMALL)
+        const [menu, setMenu] = useState(fakeMenu.MEDIUM)
 
 
         const handleAdd = (newProduct) => {

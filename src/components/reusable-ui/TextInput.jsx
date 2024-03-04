@@ -10,7 +10,6 @@ export default function TextInput({ value, onChange, Icon, className, version="n
 }
 
 const TextInputStyled = styled.div`
-        //background-color: ${theme.colors.white};
         border-radius: ${theme.borderRadius.round};
         display: flex;
         align-items: center;
@@ -23,7 +22,7 @@ const TextInputStyled = styled.div`
             align-items: center;
             font-size: ${theme.fonts.size.P0};
             margin: 0 8px 0 10px;
-            color: ${theme.colors.greySemiDark};
+            color: ${theme.colors.greyBlue};
         }
 
         input{
