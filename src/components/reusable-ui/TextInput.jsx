@@ -1,22 +1,20 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { theme } from "../theme";
 
-export default function TextInput({ value, onChange, Icon, className, ...extraProps }) {
+export default function TextInput({ value, onChange, Icon, className, version="normal", ...extraProps }) {
     return (
-        <InputStyled className={className}>
+        <TextInputStyled className={className} version={version}>
             <div className="icon">{Icon && Icon}</div>
-            <input value={value} onChange={onChange} type="text" {...extraProps} />
-        </InputStyled>    )
+            <input className="input-style" value={value} onChange={onChange} type="text" {...extraProps} />
+        </TextInputStyled>    )
 }
 
-const InputStyled = styled.div`
-    
-        background-color: ${theme.colors.white};
+const TextInputStyled = styled.div`
+        //background-color: ${theme.colors.white};
         border-radius: ${theme.borderRadius.round};
         display: flex;
         align-items: center;
         padding: 18px 24px;
-        margin: 18px 0;
         
 
         .icon{
@@ -33,10 +31,50 @@ const InputStyled = styled.div`
             font-size: ${theme.fonts.size.P0};
             color: ${theme.colors.dark};
             width: 100%;
+            
 
             &::placeholder{
-            background-color: ${theme.colors.white};
+            background-color: ${theme.colors.background_white};
             color: ${theme.colors.greyMedium};
         }
         }
+
+        ${(props) => {
+            if (props.version === "normal") return extraNormalStyle
+            if (props.version === "minimalist") return extraMinimalistStyle
+        }}
 `;
+
+const extraNormalStyle = css`
+    background-color: ${theme.colors.white};
+    padding: 18px 28px;
+    color: ${theme.colors.greySemiDark};
+
+    input {
+        color: ${theme.colors.dark};
+
+        &::placeholder {
+            background: ${theme.colors.white};
+        }
+
+        &:focus {
+            outline: 0;
+        }
+    }
+`
+
+const extraMinimalistStyle = css`
+    background: ${theme.colors.background_white};
+    width: 645px;
+    height: 35px;
+    padding: 8px 16px 8px 24px;
+
+    input{
+            color: ${theme.colors.dark};
+            background-color: ${theme.colors.background_white};
+            
+            &:focus{
+            outline: 0;
+        }
+        }
+`
