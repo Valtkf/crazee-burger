@@ -1,13 +1,11 @@
 import styled from "styled-components";
 import OrderContext from "../../../../context/OrderContext";
 import { useContext, useState } from "react";
-import { FaHamburger } from "react-icons/fa"
-import { BsFillCameraFill } from "react-icons/bs"
-import { MdOutlineEuro } from "react-icons/md"
 import  TextInput  from "../../../reusable-ui/TextInput"
 import Button from "../../../reusable-ui/Button.jsx";
 import ImagePreview from "./ImagePreview.jsx";
 import SubmitMessage from "./SubmitMessage.jsx";
+import { getInputTextsConfig } from "./inputTextConfig.jsx";
 
 
 
@@ -47,37 +45,23 @@ export default function AddForm() {
         }, 2000);
     }
 
+    const inputTexts = getInputTextsConfig(newProduct)
+
     return (
         <AddFormStyled onSubmit={handleSubmit}>
             <ImagePreview imageSource={newProduct.imageSource} title={newProduct.title} />
             <div className="input-fields">
-                <TextInput 
-                    name="title"
-                    value={newProduct.title} 
-                    type="text" 
-                    placeholder="Nom" 
-                    onChange={handleChange}
-                    Icon={<FaHamburger />}
-                    version="minimalist"
-                />
-                <TextInput
-                    name="imageSource"
-                    value={newProduct.imageSource} 
-                    type="text" 
-                    placeholder="Lien URL d'une image (ex: https://la-photo-de-mon-produit.png)" 
-                    onChange={handleChange}
-                    Icon={<BsFillCameraFill />}
-                    version="minimalist"
-                />
-                <TextInput 
-                    name="price"
-                    value={newProduct.price ? newProduct.price : ""} 
-                    type="text" 
-                    placeholder="Prix" 
-                    onChange={handleChange}
-                    Icon={<MdOutlineEuro />}
-                    version="minimalist"
-                />
+                {inputTexts.map((input) => (
+                    <TextInput 
+                        name={input.name}
+                        value={input.value}  
+                        placeholder={input.placeholder} 
+                        onChange={handleChange}
+                        Icon={input.Icon}
+                        version="minimalist"
+                    />
+                ))}
+                
             </div>
             <div className="submit">
                 <Button 
