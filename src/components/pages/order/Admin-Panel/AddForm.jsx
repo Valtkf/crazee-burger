@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import OrderContext from "../../../../context/OrderContext";
 import { useContext, useState } from "react";
-import { FiCheck } from "react-icons/fi"
+import { LiaCheckCircleSolid } from "react-icons/lia";
 import { FaHamburger } from "react-icons/fa"
 import { BsFillCameraFill } from "react-icons/bs"
 import { MdOutlineEuro } from "react-icons/md"
@@ -93,7 +93,7 @@ export default function AddForm() {
                 />
                 {isSubmitted && (
                     <div className="submit-message">
-                        <FiCheck />
+                        <LiaCheckCircleSolid className="check" />
                         <span>Ajouté avec succés !</span>
                     </div>
                 )}
@@ -156,7 +156,18 @@ const AddFormStyled = styled.form`
             cursor: pointer;
         }
         .submit-message {
-            border: 1px solid red;
+            display: flex;
+            align-items: center;
+            margin-left: 5px;
+            padding: 0px 2px 0px 10px;
+            font-size: ${theme.fonts.size.SM};
+            font-weight: ${theme.fonts.weights.regular};
+            color: ${theme.colors.success};
+
+            .check {
+                width: 18px;
+                height: 18px;
+            }
         }
     }
 `;
