@@ -1,14 +1,13 @@
 import styled from "styled-components";
 import OrderContext from "../../../../context/OrderContext";
 import { useContext, useState } from "react";
-import { LiaCheckCircleSolid } from "react-icons/lia";
 import { FaHamburger } from "react-icons/fa"
 import { BsFillCameraFill } from "react-icons/bs"
 import { MdOutlineEuro } from "react-icons/md"
 import  TextInput  from "../../../reusable-ui/TextInput"
-import { theme } from "../../../theme/index.jsx";
 import Button from "../../../reusable-ui/Button.jsx";
 import ImagePreview from "./ImagePreview.jsx";
+import SubmitMessage from "./SubmitMessage.jsx";
 
 
 
@@ -86,12 +85,7 @@ export default function AddForm() {
                     label={"Ajouter un nouveau produit au menu"}
                     version="success"
                 />
-                {isSubmitted && (
-                    <div className="submit-message">
-                        <LiaCheckCircleSolid className="check" />
-                        <span>Ajouté avec succés !</span>
-                    </div>
-                )}
+                {isSubmitted && <SubmitMessage />}
             </div>
         </AddFormStyled>
     )    
@@ -126,19 +120,6 @@ const AddFormStyled = styled.form`
             width: 50%;
             cursor: pointer;
         }
-        .submit-message {
-            display: flex;
-            align-items: center;
-            margin-left: 5px;
-            padding: 0px 2px 0px 10px;
-            font-size: ${theme.fonts.size.SM};
-            font-weight: ${theme.fonts.weights.regular};
-            color: ${theme.colors.success};
-
-            .check {
-                width: 18px;
-                height: 18px;
-            }
-        }
+        
     }
 `;
