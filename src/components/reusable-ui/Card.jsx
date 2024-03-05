@@ -3,7 +3,7 @@ import { theme } from "../theme";
 import { TiDelete } from "react-icons/ti";
 import Button from "./Button";
 
-export default function Product({ title, imageSource, leftDescription, hasDeleteButton, onDelete }) {
+export default function Card({ title, imageSource, leftDescription, hasDeleteButton, onDelete }) {
     return ( 
         <CardStyled className="produit">
             {hasDeleteButton && (
