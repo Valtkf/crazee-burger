@@ -1,10 +1,16 @@
 import styled from "styled-components";
 import { theme } from "../theme";
-import PrimaryButton from "./PrimaryButton";
+import { TiDelete } from "react-icons/ti";
+import Button from "./Button";
 
-export default function Product({ title, imageSource, leftDescription }) {
+export default function Card({ title, imageSource, leftDescription, hasDeleteButton, onDelete }) {
     return ( 
         <CardStyled className="produit">
+            {hasDeleteButton && (
+                <button className="delete-button" aria-label="delete-button" onClick={onDelete}>
+                    <TiDelete className="icon" />
+                </button>
+            )}
             <div className="image">
                 <img src={imageSource} alt={title} />
             </div>
@@ -13,7 +19,10 @@ export default function Product({ title, imageSource, leftDescription }) {
                 <div className="description">
                     <div className="left-description">{leftDescription}</div>
                     <div className="right-description">
-                        <PrimaryButton className="primary-button" label={"Ajouter"} />
+                        <Button 
+                            className="primary-button" 
+                            label={"Ajouter"}
+                        />
                     </div>
                 </div>
             </div>
@@ -32,6 +41,34 @@ const CardStyled = styled.div`
             grid-template-rows: 65% 1fr;
             padding: 20px;
             padding-bottom: 10px;
+            position: relative;
+
+            .delete-button {
+                border: 1px solid red;
+                position: absolute;
+                top: 15px;
+                right: 15px;
+                cursor: pointer;
+                width: 30px;
+                height: 30px;
+                color: ${theme.colors.primary};
+                z-index: 2;
+                padding: 0;
+                border: none;
+                background: none;
+
+                :hover {
+                color: ${theme.colors.redSecondary};
+            }
+            :active {
+                color: ${theme.colors.primary};
+            }
+            }
+
+            .icon {
+                height: 100%;
+                width: 100%;
+            }
 
             .image {
                 width: 100%;
@@ -55,6 +92,7 @@ const CardStyled = styled.div`
                     font-family: "Amatic SC", cursive;
                     font-weight: ${theme.fonts.weights.bold};
                     font-size: ${theme.fonts.size.P4};
+                    color: ${theme.colors.dark};
                     position: relative;
                     width: 100%;
                     overflow: hidden;
@@ -88,7 +126,8 @@ const CardStyled = styled.div`
                             width: 95px;
                             height: 38px;
                             cursor: pointer;
-                            
+                            padding-left: 25px;
+
                             &:active {
                                 color: white;
                                 background-color: #ff9f1b;

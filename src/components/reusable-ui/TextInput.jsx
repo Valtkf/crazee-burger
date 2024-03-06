@@ -1,28 +1,28 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { theme } from "../theme";
 
-export default function TextInput({ value, onChange, Icon, ...extraProps }) {
+export default function TextInput({ value, onChange, Icon, className, version="normal", ...extraProps }) {
     return (
-        <InputStyled>
-            {Icon && Icon}
-            <input value={value} onChange={onChange} type="text" {...extraProps} />
-        </InputStyled>    )
+        <TextInputStyled className={className} version={version}>
+            <div className="icon">{Icon && Icon}</div>
+            <input className="input-style" value={value} onChange={onChange} type="text" {...extraProps} />
+        </TextInputStyled>    )
 }
 
-const InputStyled = styled.div`
-    
-        background-color: ${theme.colors.white};
+const TextInputStyled = styled.div`
         border-radius: ${theme.borderRadius.round};
         display: flex;
         align-items: center;
         padding: 18px 24px;
-        margin: 18px 0;
         
 
         .icon{
+            display: flex;
+            justify-content: center;
+            align-items: center;
             font-size: ${theme.fonts.size.P0};
-            margin-right: 8px;
-            color: ${theme.colors.greySemiDark};
+            margin: 0 8px 0 10px;
+            color: ${theme.colors.greyBlue};
         }
 
         input{
@@ -30,10 +30,52 @@ const InputStyled = styled.div`
             font-size: ${theme.fonts.size.P0};
             color: ${theme.colors.dark};
             width: 100%;
+            
 
             &::placeholder{
-            background-color: ${theme.colors.white};
+            background-color: ${theme.colors.background_white};
             color: ${theme.colors.greyMedium};
         }
         }
+
+        ${({version}) => extraStyle[version]}
 `;
+
+const extraNormalStyle = css`
+    background-color: ${theme.colors.white};
+    padding: 18px 28px;
+    color: ${theme.colors.greySemiDark};
+
+    input {
+        color: ${theme.colors.dark};
+
+        &::placeholder {
+            background: ${theme.colors.white};
+        }
+
+        &:focus {
+            outline: 0;
+        }
+    }
+`
+
+const extraMinimalistStyle = css`
+    background: ${theme.colors.background_white};
+    width: 645px;
+    height: 35px;
+    padding: 8px 16px 8px 24px;
+
+    input{
+            color: ${theme.colors.dark};
+            background-color: ${theme.colors.background_white};
+            
+            &:focus{
+            outline: 0;
+        }
+        }
+`
+
+const extraStyle = {
+    normal: extraNormalStyle,
+    minimalist: extraMinimalistStyle
+}

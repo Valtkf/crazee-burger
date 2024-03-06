@@ -12,7 +12,7 @@ export default defineConfig({
   plugins: [react()],
   build: {
     rollupOptions: {
-      external: ["../reusable-ui/Logo", "../reusable-ui/PrimaryButton", "../reusable-ui/TextInput"],
+      external: ["../reusable-ui/Logo", "../reusable-ui/Button", "../reusable-ui/TextInput"],
     },
   },
 });
