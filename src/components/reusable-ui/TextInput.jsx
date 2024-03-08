@@ -13,16 +13,12 @@ const TextInputStyled = styled.div`
         border-radius: ${theme.borderRadius.round};
         display: flex;
         align-items: center;
-        padding: 18px 24px;
-        
 
         .icon{
-            display: flex;
-            justify-content: center;
-            align-items: center;
             font-size: ${theme.fonts.size.P0};
-            margin: 0 8px 0 10px;
+            margin: 0 13px 0 8px;
             color: ${theme.colors.greyBlue};
+            display: flex;
         }
 
         input{
@@ -61,9 +57,9 @@ const extraNormalStyle = css`
 
 const extraMinimalistStyle = css`
     background: ${theme.colors.background_white};
-    width: 645px;
-    height: 35px;
     padding: 8px 16px 8px 24px;
+    width: 645px;
+    
 
     input{
             color: ${theme.colors.dark};

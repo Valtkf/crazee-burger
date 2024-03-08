@@ -43,6 +43,9 @@ const CardStyled = styled.div`
             padding-bottom: 10px;
             position: relative;
 
+                
+            
+
             .delete-button {
                 border: 1px solid red;
                 position: absolute;
