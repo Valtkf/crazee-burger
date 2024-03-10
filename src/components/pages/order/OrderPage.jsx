@@ -6,6 +6,7 @@ import Navbar from "./Navbar/Navbar";
 import { useState } from "react";
 import OrderContext from "../../../context/OrderContext";
 import { fakeMenu } from "../../../fakeData/fakeMenu.jsx";
+import { EMPTY_PRODUCT } from "../../../enums/product.jsx";
 
     export default function OrderPage() {
         const { username } = useParams()
@@ -15,6 +16,7 @@ import { fakeMenu } from "../../../fakeData/fakeMenu.jsx";
         const [isEditSelected, setIsEditSelected] = useState(false)
         const [currentTabSelected, setCurrentTabSelected] = useState("edit")
         const [menu, setMenu] = useState(fakeMenu.MEDIUM)
+        const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT)
 
 
         const handleAdd = (newProduct) => {
@@ -51,6 +53,8 @@ import { fakeMenu } from "../../../fakeData/fakeMenu.jsx";
             handleAdd,
             handleDelete,
             resetMenu,
+            productSelected,
+            setProductSelected,
         }
         
         return (
