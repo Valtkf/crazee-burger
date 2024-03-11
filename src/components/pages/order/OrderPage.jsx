@@ -20,7 +20,7 @@ import { EMPTY_PRODUCT } from "../../../enums/product.jsx";
 
 
         const handleAdd = (newProduct) => {
-            const menuCopy = [...menu]
+            const menuCopy = JSON.parse(JSON.stringify(menu))
     
             const menuUpdated = [newProduct,...menuCopy]
     
@@ -28,10 +28,23 @@ import { EMPTY_PRODUCT } from "../../../enums/product.jsx";
         }
     
         const handleDelete = (idOfProductToDelete) => { 
-            const menuCopy = [...menu]
+            const menuCopy = JSON.parse(JSON.stringify(menu))
             const menuUpdated = menuCopy.filter((product) => product.id !== idOfProductToDelete)
     
             setMenu(menuUpdated)
+        }
+
+        const handleEdit = (productBeingEdited) => {
+            const menuCopy = JSON.parse(JSON.stringify(menu))
+
+            const indexOfProductToEdit = menu.findIndex(
+                (menuProduct) => menuProduct.id === productBeingEdited.id
+            )
+            console.log("indexOfProductToEdit", indexOfProductToEdit)
+            
+            menuCopy[indexOfProductToEdit] = productBeingEdited
+
+            setMenu(menuCopy)
         }
 
         const resetMenu = () => { 
@@ -55,6 +68,7 @@ import { EMPTY_PRODUCT } from "../../../enums/product.jsx";
             resetMenu,
             productSelected,
             setProductSelected,
+            handleEdit,
         }
         
         return (

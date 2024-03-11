@@ -1,32 +1,35 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import OrderContext from "../../../../context/OrderContext";
 import styled from "styled-components";
 import ImagePreview from "./ImagePreview";
 import { getInputTextsConfig } from "./inputTextConfig.jsx";
-import { EMPTY_PRODUCT } from "../../../../enums/product.jsx";
 import TextInput from "../../../reusable-ui/TextInput";
 
 
 export default function EditForm() {
-    const { productSelected } = useContext(OrderContext)
-    const [productBeingEdited, setProductBeingEdited] = useState(EMPTY_PRODUCT)
+    const { productSelected, setProductSelected, handleEdit } = useContext(OrderContext)
+    
 
     const inputTexts = getInputTextsConfig(productSelected)
 
     const handleChange = (event) => { 
         const {name, value} = event.target
-        setProductBeingEdited({
-            ...productBeingEdited,
+        const productBeingUpdated = {
+            ...productSelected,
             [name]: value,
-        })
+        }
+
+        setProductSelected(productBeingUpdated)
+        handleEdit(productBeingUpdated)
     }
 
     return (
         <EditFormStyled >
-            <ImagePreview imageSource={productSelected.imageSource} title={productBeingEdited.title} />
+            <ImagePreview imageSource={productSelected.imageSource} title={productSelected.title} />
             <div className="input-fields">
                 {inputTexts.map((input) => (
-                    <TextInput 
+                    <TextInput
+                        key={input.id}
                         name={input.name}
                         value={input.value}  
                         placeholder={input.placeholder} 
