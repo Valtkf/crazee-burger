@@ -31,20 +31,17 @@ export default function Card({ title, imageSource, leftDescription, hasDeleteBut
 }
 
 const CardStyled = styled.div`
-    
             background: white;
+            box-sizing: border-box;
             box-shadow: -8px 8px 20px 0px rgb(0 0 0 / 20%);
-            width: 200px;
-            height: 300px;
+            width: 240px;
+            height: 330px;
             border-radius: ${theme.borderRadius.extraRound};
             display: grid;
             grid-template-rows: 65% 1fr;
             padding: 20px;
             padding-bottom: 10px;
             position: relative;
-
-                
-            
 
             .delete-button {
                 border: 1px solid red;
