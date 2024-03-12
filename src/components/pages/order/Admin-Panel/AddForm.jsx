@@ -45,7 +45,8 @@ export default function AddForm() {
             <ImagePreview imageSource={newProduct.imageSource} title={newProduct.title} />
             <div className="input-fields">
                 {inputTexts.map((input) => (
-                    <TextInput 
+                    <TextInput
+                        key={input.id}
                         name={input.name}
                         value={input.value}  
                         placeholder={input.placeholder} 

@@ -7,6 +7,7 @@ import { useState } from "react";
 import OrderContext from "../../../context/OrderContext";
 import { fakeMenu } from "../../../fakeData/fakeMenu.jsx";
 import { EMPTY_PRODUCT } from "../../../enums/product.jsx";
+import { deepClone } from "../../../utils/array.jsx";
 
     export default function OrderPage() {
         const { username } = useParams()
@@ -20,7 +21,7 @@ import { EMPTY_PRODUCT } from "../../../enums/product.jsx";
 
 
         const handleAdd = (newProduct) => {
-            const menuCopy = JSON.parse(JSON.stringify(menu))
+            const menuCopy = deepClone(menu)
     
             const menuUpdated = [newProduct,...menuCopy]
     
@@ -28,14 +29,14 @@ import { EMPTY_PRODUCT } from "../../../enums/product.jsx";
         }
     
         const handleDelete = (idOfProductToDelete) => { 
-            const menuCopy = JSON.parse(JSON.stringify(menu))
+            const menuCopy = deepClone(menu)
             const menuUpdated = menuCopy.filter((product) => product.id !== idOfProductToDelete)
     
             setMenu(menuUpdated)
         }
 
         const handleEdit = (productBeingEdited) => {
-            const menuCopy = JSON.parse(JSON.stringify(menu))
+            const menuCopy = deepClone(menu)
 
             const indexOfProductToEdit = menu.findIndex(
                 (menuProduct) => menuProduct.id === productBeingEdited.id
