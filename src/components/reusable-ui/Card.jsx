@@ -14,10 +14,11 @@ export default function Card({
     onDelete,
     onClick,
     isHoverable,
+    isSelected,
 }) {
     return ( 
         <CardStyled className="produit" onClick={onClick} isHoverable={isHoverable}>
-            <div className="card">
+            <div className="card" style={isSelected ? { background: "orange" } : {}}>
                 {hasDeleteButton && (
                     <button className="delete-button" aria-label="delete-button" onClick={onDelete}>
                         <TiDelete className="icon" />
@@ -51,11 +52,13 @@ Card.propTypes = {
     onDelete: PropTypes.func,
     onClick: PropTypes.func,
     isHoverable: PropTypes.bool,
+    isSelected: PropTypes.bool,
 };
 
 const CardStyled = styled.div`
     ${(props) => props.isHoverable && hoverableStyle}
     border-radius: ${theme.borderRadius.extraRound};
+    
         .card {
             background: white;
             box-sizing: border-box;
