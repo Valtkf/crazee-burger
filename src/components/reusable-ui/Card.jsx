@@ -1,28 +1,41 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { theme } from "../theme";
 import { TiDelete } from "react-icons/ti";
 import Button from "./Button";
+import PropTypes from 'prop-types';
 
-export default function Card({ title, imageSource, leftDescription, hasDeleteButton, onDelete, onClick }) {
+
+
+export default function Card({ 
+    title,
+    imageSource,
+    leftDescription,
+    hasDeleteButton,
+    onDelete,
+    onClick,
+    isHoverable,
+}) {
     return ( 
-        <CardStyled className="produit" onClick={onClick}>
-            {hasDeleteButton && (
-                <button className="delete-button" aria-label="delete-button" onClick={onDelete}>
-                    <TiDelete className="icon" />
-                </button>
-            )}
-            <div className="image">
-                <img src={imageSource} alt={title} />
-            </div>
-            <div className="info-text">
-                <div className="title">{title}</div>
-                <div className="description">
-                    <div className="left-description">{leftDescription}</div>
-                    <div className="right-description">
-                        <Button 
-                            className="primary-button" 
-                            label={"Ajouter"}
-                        />
+        <CardStyled className="produit" onClick={onClick} isHoverable={isHoverable}>
+            <div className="card">
+                {hasDeleteButton && (
+                    <button className="delete-button" aria-label="delete-button" onClick={onDelete}>
+                        <TiDelete className="icon" />
+                    </button>
+                )}
+                <div className="image">
+                    <img src={imageSource} alt={title} />
+                </div>
+                <div className="info-text">
+                    <div className="title">{title}</div>
+                    <div className="description">
+                        <div className="left-description">{leftDescription}</div>
+                        <div className="right-description">
+                            <Button
+                                className="primary-button"
+                                label={"Ajouter"}
+                            />
+                        </div>
                     </div>
                 </div>
             </div>
@@ -30,7 +43,20 @@ export default function Card({ title, imageSource, leftDescription, hasDeleteBut
     )
 }
 
+Card.propTypes = {
+    title: PropTypes.string.isRequired,
+    imageSource: PropTypes.string.isRequired,
+    leftDescription: PropTypes.string.isRequired, // Ajout de la validation pour leftDescription
+    hasDeleteButton: PropTypes.bool,
+    onDelete: PropTypes.func,
+    onClick: PropTypes.func,
+    isHoverable: PropTypes.bool,
+};
+
 const CardStyled = styled.div`
+    ${(props) => props.isHoverable && hoverableStyle}
+    border-radius: ${theme.borderRadius.extraRound};
+        .card {
             background: white;
             box-sizing: border-box;
             box-shadow: -8px 8px 20px 0px rgb(0 0 0 / 20%);
@@ -137,4 +163,14 @@ const CardStyled = styled.div`
                     }
                 }
             }
+        }
 `;
+
+const hoverableStyle = css`
+    &:hover {
+        transform: scale(1.05);
+        transition: ease-out 0.4s;
+        box-shadow: ${theme.shadows.orangeHighlight};
+        cursor: pointer
+    }
+`
