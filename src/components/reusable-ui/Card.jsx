@@ -17,10 +17,15 @@ export default function Card({
     isSelected,
 }) {
     return ( 
-        <CardStyled className="produit" onClick={onClick} isHoverable={isHoverable} isSelected={isSelected} >
+        <CardStyled 
+            className="produit" 
+            onClick={onClick} 
+            isHoverable={isHoverable} 
+            isSelected={isSelected} 
+        >
             <div className="card" >
                 {hasDeleteButton && (
-                    <button className="delete-button" aria-label="delete-button" onClick={onDelete}>
+                    <button className="delete-button" aria-label="delete-button" onClick={onDelete} >
                         <TiDelete className="icon" />
                     </button>
                 )}
@@ -35,6 +40,7 @@ export default function Card({
                             <Button
                                 className="primary-button"
                                 label={"Ajouter"}
+                                onClick={(event) => event.stopPropagation()}
                             />
                         </div>
                     </div>
@@ -156,6 +162,15 @@ const CardStyled = styled.div`
                             height: 38px;
                             cursor: pointer;
                             padding-left: 25px;
+                        }
+                        :hover {
+                            color: ${theme.colors.white};
+                            background-color: ${theme.colors.primary};
+                            transition: all 200ms ease-out;
+                        }
+                        :active {
+                            background-color: ${theme.colors.white};
+                            color: ${theme.colors.primary};
                         }
                     }
                 }
