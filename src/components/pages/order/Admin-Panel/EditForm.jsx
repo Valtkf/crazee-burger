@@ -7,10 +7,9 @@ import TextInput from "../../../reusable-ui/TextInput";
 
 
 export default function EditForm() {
-    const { productSelected, setProductSelected, handleEdit } = useContext(OrderContext)
-    
-
+    const { productSelected, setProductSelected, handleEdit, titleEditRef } = useContext(OrderContext)
     const inputTexts = getInputTextsConfig(productSelected)
+    
 
     const handleChange = (event) => { 
         const {name, value} = event.target
@@ -36,6 +35,7 @@ export default function EditForm() {
                         onChange={handleChange}
                         Icon={input.Icon}
                         version="minimalist"
+                        ref={input.name === "title" ? titleEditRef: null}
                     />
                 ))}
                 

@@ -16,7 +16,7 @@ export default createContext ({
     currentTabSelected: false, 
     setCurrentTabSelected: () => {},
 
-    menu : [],
+    menu: [],
     handleAdd: () => {},
     handleDelete: () => {},
     handleEdit: () => {},
@@ -27,4 +27,6 @@ export default createContext ({
 
     productSelected: {},
     setProductSelected: () => {},
+
+    titleEditRef: {},
 })

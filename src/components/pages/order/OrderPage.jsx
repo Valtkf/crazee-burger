@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Main from "./Main/Main";
 import { theme } from "../../theme";
 import Navbar from "./Navbar/Navbar";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import OrderContext from "../../../context/OrderContext";
 import { fakeMenu } from "../../../fakeData/fakeMenu.jsx";
 import { EMPTY_PRODUCT } from "../../../enums/product.jsx";
@@ -11,13 +11,14 @@ import { deepClone } from "../../../utils/array.jsx";
 
     export default function OrderPage() {
         const { username } = useParams()
-        const [isModeAdmin, setIsModeAdmin] = useState(true)
+        const [isModeAdmin, setIsModeAdmin] = useState(false)
         const [isCollapsed, setIsCollapsed] = useState(false)
         const [isAddSelected, setIsAddSelected] = useState(true)
         const [isEditSelected, setIsEditSelected] = useState(false)
-        const [currentTabSelected, setCurrentTabSelected] = useState("edit")
+        const [currentTabSelected, setCurrentTabSelected] = useState("add")
         const [menu, setMenu] = useState(fakeMenu.MEDIUM)
         const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT)
+        const titleEditRef = useRef()
 
 
         const handleAdd = (newProduct) => {
@@ -50,6 +51,7 @@ import { deepClone } from "../../../utils/array.jsx";
 
         const resetMenu = () => { 
             setMenu(fakeMenu.SMALL)
+            setProductSelected(EMPTY_PRODUCT);
         }
 
         const orderContextValue = {
@@ -70,6 +72,7 @@ import { deepClone } from "../../../utils/array.jsx";
             productSelected,
             setProductSelected,
             handleEdit,
+            titleEditRef,
         }
         
         return (

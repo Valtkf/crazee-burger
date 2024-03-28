@@ -30,7 +30,7 @@ export default function Card({
                 <div className="image">
                     <img src={imageSource} alt={title} />
                 </div>
-                <div className="info-text">
+                <div className="text-info">
                     <div className="title">{title}</div>
                     <div className="description">
                         <div className="left-description">{leftDescription}</div>
@@ -60,7 +60,7 @@ Card.propTypes = {
 };
 
 const CardStyled = styled.div`
-    ${({ isHoverable }) => isHoverable && hoverableStyle}
+    ${({ isHoverable, isModeAdmin }) => (isHoverable || !isModeAdmin) && hoverableStyle}
     border-radius: ${theme.borderRadius.extraRound};
 
     .card {
@@ -115,7 +115,7 @@ const CardStyled = styled.div`
             }
         }
 
-        .info-text {
+        .text-info {
             display: grid;
             grid-template-rows: 30% 70%;
             padding: 5px;
@@ -147,7 +147,6 @@ const CardStyled = styled.div`
                     font-weight: ${theme.fonts.weights.regular};
                     font-size: 16px;
                     padding: 10px 50px 22px 0px;
-                    ${({ isSelected }) => isSelected && `color: ${theme.colors.white};`}
                 }
 
                 .right-description {
@@ -190,6 +189,7 @@ const hoverableStyle = css`
 
 const selectedStyle = css`
     background: ${theme.colors.primary};
+    
     .primary-button {
         color: ${theme.colors.primary};
         background-color: ${theme.colors.white};
@@ -211,6 +211,15 @@ const selectedStyle = css`
         color: ${theme.colors.white};
         :active {
             color: ${theme.colors.white};
+        }
+    }
+
+    .text-info {
+        .description {
+            .left-description {
+                color: ${theme.colors.white};
+        
+            }
         }
     }
 `;
