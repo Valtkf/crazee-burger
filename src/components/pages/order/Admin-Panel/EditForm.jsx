@@ -43,8 +43,8 @@ export default function EditForm() {
             </div>
             <div className="submit">
                 <span className="sentence">
-                    Cliquer sur un produit du menu pour le modifier en temps réel
-                    <span className="live-update"> en temps réel</span>
+                    Cliquer sur un produit du menu pour le modifier en temps réel{" "}
+                    <span className="live-update">en temps réel</span>
                 </span>
             </div>
         </EditFormStyled>
