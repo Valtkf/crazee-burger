@@ -4,7 +4,7 @@ import styled from "styled-components";
 import ImagePreview from "./ImagePreview";
 import { getInputTextsConfig } from "./inputTextConfig.jsx";
 import TextInput from "../../../reusable-ui/TextInput";
-import { theme } from "../../../theme/index.jsx";
+import EditInfoMessage from "./EditInfoMessage.jsx";
 
 
 export default function EditForm() {
@@ -42,10 +42,7 @@ export default function EditForm() {
                 
             </div>
             <div className="submit">
-                <span className="sentence">
-                    Cliquer sur un produit du menu pour le modifier en temps réel{" "}
-                    <span className="live-update">en temps réel</span>
-                </span>
+                <EditInfoMessage />
             </div>
         </EditFormStyled>
     )
@@ -77,12 +74,6 @@ const EditFormStyled = styled.form`
         display: flex;
         align-items: center;
         
-        .sentence {
-            color: ${theme.colors.primary};
-            font-size: ${theme.fonts.SM};
-            .live-update {
-                text-decoration: underline;
-            }
-        }
+        
     }
 `;
