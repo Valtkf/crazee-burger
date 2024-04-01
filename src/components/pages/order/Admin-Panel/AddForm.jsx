@@ -1,18 +1,14 @@
 import styled from "styled-components";
-import OrderContext from "../../../../context/OrderContext";
+import OrderContext from "../../../../context/OrderContext.jsx";
 import { useContext, useState } from "react";
-import  TextInput  from "../../../reusable-ui/TextInput"
-import Button from "../../../reusable-ui/Button.jsx";
-import ImagePreview from "./ImagePreview.jsx";
-import SubmitMessage from "./SubmitMessage.jsx";
-import { getInputTextsConfig } from "./inputTextConfig.jsx";
 import  { EMPTY_PRODUCT } from "../../../../enums/product.jsx";
+import AdminForm from "./AdminForm.jsx";
 
 
 export default function AddForm() {
     const {handleAdd} = useContext(OrderContext)
     const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
-    const [isSubmitted, setIsSubmitted] = useState(false)
+    const [ setIsSubmitted] = useState(false)
 
     const handleSubmit = (event) => { 
         event.preventDefault()
@@ -38,38 +34,13 @@ export default function AddForm() {
         }, 2000);
     }
 
-    const inputTexts = getInputTextsConfig(newProduct)
 
     return (
-        <AddFormStyled onSubmit={handleSubmit}>
-            <ImagePreview imageSource={newProduct.imageSource} title={newProduct.title} />
-            <div className="input-fields">
-                {inputTexts.map((input) => (
-                    <TextInput
-                        key={input.id}
-                        name={input.name}
-                        value={input.value}  
-                        placeholder={input.placeholder} 
-                        onChange={handleChange}
-                        Icon={input.Icon}
-                        version="minimalist"
-                    />
-                ))}
-                
-            </div>
-            <div className="submit">
-                <Button 
-                    className="submit-button"
-                    label={"Ajouter un nouveau produit au menu"}
-                    version="success"
-                />
-                {isSubmitted && <SubmitMessage />}
-            </div>
-        </AddFormStyled>
+        <AdminForm product={newProduct} onSubmit={handleSubmit} onChange={handleChange} />
     )    
 }
 
-const AddFormStyled = styled.form`
+const AdminFormStyled = styled.form`
     display: grid;
     grid-template-columns: 1fr 3fr;
     grid-template-rows: repeat(4, 1fr);
