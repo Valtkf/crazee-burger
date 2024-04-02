@@ -11,13 +11,13 @@ import { deepClone } from "../../../utils/array.jsx";
 
     export default function OrderPage() {
         const { username } = useParams()
-        const [isModeAdmin, setIsModeAdmin] = useState(false)
+        const [isModeAdmin, setIsModeAdmin] = useState(true)
         const [isCollapsed, setIsCollapsed] = useState(false)
         const [isAddSelected, setIsAddSelected] = useState(true)
         const [isEditSelected, setIsEditSelected] = useState(false)
-        const [currentTabSelected, setCurrentTabSelected] = useState("add")
+        const [currentTabSelected, setCurrentTabSelected] = useState("edit")
         const [menu, setMenu] = useState(fakeMenu.MEDIUM)
-        const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT)
+        const [productSelected, setProductSelected] = useState(fakeMenu.SMALL[1])
         const titleEditRef = useRef()
 
 

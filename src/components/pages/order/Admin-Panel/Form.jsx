@@ -1,13 +1,12 @@
+import React from "react";
 import styled from "styled-components";
 import  TextInput  from "../../../reusable-ui/TextInput.jsx"
-import Button from "../../../reusable-ui/Button.jsx";
 import ImagePreview from "./ImagePreview.jsx";
-import SubmitMessage from "./SubmitMessage.jsx";
 import { getInputTextsConfig } from "./inputTextConfig.jsx";
 import PropTypes from 'prop-types';
 
 
-export default function Form({ product, onSubmit, onChange, isSubmitted }) {
+const Form = React.forwardRef(function Form({ product, onSubmit, onChange, QUELQUECHOSE }, ref) {
 
     const inputTexts = getInputTextsConfig(product)
 
@@ -24,29 +23,25 @@ export default function Form({ product, onSubmit, onChange, isSubmitted }) {
                         onChange={onChange}
                         Icon={input.Icon}
                         version="minimalist"
+                        ref={ref && input.name === "title" ? ref : null}
                     />
                 ))}
-                
             </div>
-            <div className="submit">
-                <Button 
-                    className="submit-button"
-                    label={"Ajouter un nouveau produit au menu"}
-                    version="success"
-                />
-                {isSubmitted && <SubmitMessage />}
-            </div>
+            <div className="submit">{QUELQUECHOSE}</div>
         </FormStyled>
     )    
-}
+})
+
+export default Form 
 
 Form.propTypes = {
+    QUELQUECHOSE: PropTypes.func.isRequired,
     onSubmit: PropTypes.func.isRequired,
     onChange: PropTypes.func.isRequired,
     isSubmitted: PropTypes.bool.isRequired,
     product: PropTypes.shape({
     imageSource: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired
+    title: PropTypes.string.isRequired,
     }).isRequired
 };
 
