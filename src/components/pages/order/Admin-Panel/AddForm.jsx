@@ -5,7 +5,6 @@ import Form from "./Form.jsx";
 import SubmitMessage from "./SubmitMessage.jsx";
 import Button from "../../../reusable-ui/Button.jsx";
 
-
 export default function AddForm() {
     const {handleAdd} = useContext(OrderContext)
     const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
@@ -41,15 +40,15 @@ export default function AddForm() {
             onSubmit={handleSubmit} 
             onChange={handleChange} 
             isSubmitted={isSubmitted}
-            QUELQUECHOSE={ 
+        >
             <>
-                <Button 
+                <Button
                     className="submit-button"
                     label={"Ajouter un nouveau produit au menu"}
                     version="success"
                 />
                 {isSubmitted && <SubmitMessage />}
-            </>}
-        />
+            </>
+        </Form>
     )    
 }

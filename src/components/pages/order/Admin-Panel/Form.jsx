@@ -6,7 +6,7 @@ import { getInputTextsConfig } from "./inputTextConfig.jsx";
 import PropTypes from 'prop-types';
 
 
-const Form = React.forwardRef(function Form({ product, onSubmit, onChange, QUELQUECHOSE }, ref) {
+const Form = React.forwardRef(function Form({ product, onSubmit, onChange, children }, ref) {
 
     const inputTexts = getInputTextsConfig(product)
 
@@ -27,7 +27,7 @@ const Form = React.forwardRef(function Form({ product, onSubmit, onChange, QUELQ
                     />
                 ))}
             </div>
-            <div className="submit">{QUELQUECHOSE}</div>
+            <div className="submit">{children}</div>
         </FormStyled>
     )    
 })
@@ -35,7 +35,7 @@ const Form = React.forwardRef(function Form({ product, onSubmit, onChange, QUELQ
 export default Form 
 
 Form.propTypes = {
-    QUELQUECHOSE: PropTypes.func.isRequired,
+    children: PropTypes.func.isRequired,
     onSubmit: PropTypes.func.isRequired,
     onChange: PropTypes.func.isRequired,
     isSubmitted: PropTypes.bool.isRequired,
