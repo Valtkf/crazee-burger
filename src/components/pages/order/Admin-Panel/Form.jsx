@@ -1,30 +1,18 @@
 import styled from "styled-components";
-import { useState } from "react";
 import  TextInput  from "../../../reusable-ui/TextInput.jsx"
 import Button from "../../../reusable-ui/Button.jsx";
 import ImagePreview from "./ImagePreview.jsx";
 import SubmitMessage from "./SubmitMessage.jsx";
 import { getInputTextsConfig } from "./inputTextConfig.jsx";
+import PropTypes from 'prop-types';
 
 
-
-export default function AdminForm({ product, onSubmit, onChange }) {
-    
-    
-    const [isSubmitted, setIsSubmitted] = useState(false)
-
-
-    const displaySuccessMessage = () => { 
-        setIsSubmitted(true)
-        setTimeout(() => {
-            setIsSubmitted(false)
-        }, 2000);
-    }
+export default function Form({ product, onSubmit, onChange, isSubmitted }) {
 
     const inputTexts = getInputTextsConfig(product)
 
     return (
-        <AdminFormStyled onSubmit={onSubmit}>
+        <FormStyled onSubmit={onSubmit}>
             <ImagePreview imageSource={product.imageSource} title={product.title} />
             <div className="input-fields">
                 {inputTexts.map((input) => (
@@ -48,11 +36,21 @@ export default function AdminForm({ product, onSubmit, onChange }) {
                 />
                 {isSubmitted && <SubmitMessage />}
             </div>
-        </AdminFormStyled>
+        </FormStyled>
     )    
 }
 
-const AdminFormStyled = styled.form`
+Form.propTypes = {
+    onSubmit: PropTypes.func.isRequired,
+    onChange: PropTypes.func.isRequired,
+    isSubmitted: PropTypes.bool.isRequired,
+    product: PropTypes.shape({
+    imageSource: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired
+    }).isRequired
+};
+
+const FormStyled = styled.form`
     display: grid;
     grid-template-columns: 1fr 3fr;
     grid-template-rows: repeat(4, 1fr);
