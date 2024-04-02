@@ -68,10 +68,9 @@ const extraStyleSuccess = css`
         display:inline-flex;
         justify-content: center;
         align-items: center;
-        position: relative;
         white-space: nowrap;
         text-decoration: none;
-        line-height: 1;
+        
 
         padding: 18px;
         border-radius: 5px;

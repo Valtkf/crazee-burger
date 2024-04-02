@@ -16,11 +16,17 @@ export default createContext ({
     currentTabSelected: false, 
     setCurrentTabSelected: () => {},
 
-    menu : [],
+    menu: [],
     handleAdd: () => {},
     handleDelete: () => {},
+    handleEdit: () => {},
     resetMenu: () => {},
 
-    newProduct: [],
+    newProduct: {},
     setNewProduct: () => {},
+
+    productSelected: {},
+    setProductSelected: () => {},
+
+    titleEditRef: {},
 })

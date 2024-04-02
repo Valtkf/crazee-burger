@@ -3,9 +3,11 @@ import styled from "styled-components";
 import Main from "./Main/Main";
 import { theme } from "../../theme";
 import Navbar from "./Navbar/Navbar";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import OrderContext from "../../../context/OrderContext";
 import { fakeMenu } from "../../../fakeData/fakeMenu.jsx";
+import { EMPTY_PRODUCT } from "../../../enums/product.jsx";
+import { deepClone } from "../../../utils/array.jsx";
 
     export default function OrderPage() {
         const { username } = useParams()
@@ -15,10 +17,12 @@ import { fakeMenu } from "../../../fakeData/fakeMenu.jsx";
         const [isEditSelected, setIsEditSelected] = useState(false)
         const [currentTabSelected, setCurrentTabSelected] = useState("add")
         const [menu, setMenu] = useState(fakeMenu.MEDIUM)
+        const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT)
+        const titleEditRef = useRef()
 
 
         const handleAdd = (newProduct) => {
-            const menuCopy = [...menu]
+            const menuCopy = deepClone(menu)
     
             const menuUpdated = [newProduct,...menuCopy]
     
@@ -26,14 +30,28 @@ import { fakeMenu } from "../../../fakeData/fakeMenu.jsx";
         }
     
         const handleDelete = (idOfProductToDelete) => { 
-            const menuCopy = [...menu]
+            const menuCopy = deepClone(menu)
             const menuUpdated = menuCopy.filter((product) => product.id !== idOfProductToDelete)
     
             setMenu(menuUpdated)
         }
 
+        const handleEdit = (productBeingEdited) => {
+            const menuCopy = deepClone(menu)
+
+            const indexOfProductToEdit = menu.findIndex(
+                (menuProduct) => menuProduct.id === productBeingEdited.id
+            )
+            console.log("indexOfProductToEdit", indexOfProductToEdit)
+            
+            menuCopy[indexOfProductToEdit] = productBeingEdited
+
+            setMenu(menuCopy)
+        }
+
         const resetMenu = () => { 
             setMenu(fakeMenu.SMALL)
+            setProductSelected(EMPTY_PRODUCT);
         }
 
         const orderContextValue = {
@@ -51,6 +69,10 @@ import { fakeMenu } from "../../../fakeData/fakeMenu.jsx";
             handleAdd,
             handleDelete,
             resetMenu,
+            productSelected,
+            setProductSelected,
+            handleEdit,
+            titleEditRef,
         }
         
         return (
