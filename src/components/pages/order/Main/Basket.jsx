@@ -31,6 +31,7 @@ const BasketStyled = styled.div`
         align-items: center;
         background: ${theme.colors.background_white};
         color: ${theme.colors.greyBlue};
+        box-shadow: ${theme.shadows.basket};
     }
     .footer{
         height: 70px;
