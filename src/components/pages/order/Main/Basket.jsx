@@ -14,7 +14,7 @@ export default function Basket() {
 }
 
 const BasketStyled = styled.div`
-    //background: pink;
+    background: pink;
     display: flex;
     flex-direction: column;
     
@@ -39,6 +39,5 @@ const BasketStyled = styled.div`
         align-items: center;
         background: ${theme.colors.background_dark};
         color: ${theme.colors.primary};
-        border-bottom-left-radius: ${theme.borderRadius.extraRound};
     }
 `
