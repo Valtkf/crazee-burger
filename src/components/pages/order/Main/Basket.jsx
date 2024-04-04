@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import { theme } from "../../../theme"
 
 
 
@@ -13,26 +14,31 @@ export default function Basket() {
 }
 
 const BasketStyled = styled.div`
-    background: pink;
+    //background: pink;
     display: flex;
     flex-direction: column;
-
+    
     .head{
-        background: red;
-        height: 10%;
+        height: 70px;
+        background: ${theme.colors.background_dark};
+        color: ${theme.colors.primary};
     }
     .body{
         background: blue;
-        height: 80%;
+        flex: 1;
         display: flex;
         justify-content: center;
         align-items: center;
+        background: ${theme.colors.background_white};
+        color: ${theme.colors.greyBlue};
     }
     .footer{
-        background: green;
-        height: 10%;
+        height: 70px;
         display: flex;
         justify-content: center;
         align-items: center;
+        background: ${theme.colors.background_dark};
+        color: ${theme.colors.primary};
+        border-bottom-left-radius: ${theme.borderRadius.extraRound};
     }
 `
