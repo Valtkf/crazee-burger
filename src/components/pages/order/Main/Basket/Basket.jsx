@@ -1,14 +1,16 @@
 import styled from "styled-components"
 import { theme } from "../../../../theme"
 import Header from "../../../../reusable-ui/Header"
+import Total from "./Total"
+import { formatPrice } from "../../../../../utils/maths.jsx"
 
 
 
 export default function Basket() {
     return ( 
-        <BasketStyled>
-            <Header>Head</Header>
-            <div className="body">Body</div>
+        <BasketStyled>    
+            <Total amountToPay={formatPrice(0)}/>
+                <div className="body">Body</div>
             <Header>Footer</Header>
         </BasketStyled>
     )

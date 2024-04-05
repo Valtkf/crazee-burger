@@ -9,4 +9,5 @@ const HeaderStyled = styled.div`
     height: 70px;
     background: ${theme.colors.background_dark};
     color: ${theme.colors.primary};
+    padding: 0 16px;
 `;
