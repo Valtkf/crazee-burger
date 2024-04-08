@@ -5,9 +5,9 @@ import { theme } from "../../theme";
 import Navbar from "./Navbar/Navbar";
 import { useRef, useState } from "react";
 import OrderContext from "../../../context/OrderContext";
-import { fakeMenu } from "../../../fakeData/fakeMenu.jsx";
 import { EMPTY_PRODUCT } from "../../../enums/product.jsx";
-import { deepClone } from "../../../utils/array.jsx";
+import { useMenu } from "../../../hooks/useMenu.jsx"
+
 
     export default function OrderPage() {
         const { username } = useParams()
@@ -16,43 +16,11 @@ import { deepClone } from "../../../utils/array.jsx";
         const [isAddSelected, setIsAddSelected] = useState(true)
         const [isEditSelected, setIsEditSelected] = useState(false)
         const [currentTabSelected, setCurrentTabSelected] = useState("add")
-        const [menu, setMenu] = useState(fakeMenu.MEDIUM)
         const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT)
         const titleEditRef = useRef()
+        const {menu, handleAdd, handleDelete, handleEdit, resetMenu} = useMenu()
 
 
-        const handleAdd = (newProduct) => {
-            const menuCopy = deepClone(menu)
-    
-            const menuUpdated = [newProduct,...menuCopy]
-    
-            setMenu(menuUpdated)
-        }
-    
-        const handleDelete = (idOfProductToDelete) => { 
-            const menuCopy = deepClone(menu)
-            const menuUpdated = menuCopy.filter((product) => product.id !== idOfProductToDelete)
-    
-            setMenu(menuUpdated)
-        }
-
-        const handleEdit = (productBeingEdited) => {
-            const menuCopy = deepClone(menu)
-
-            const indexOfProductToEdit = menu.findIndex(
-                (menuProduct) => menuProduct.id === productBeingEdited.id
-            )
-            console.log("indexOfProductToEdit", indexOfProductToEdit)
-            
-            menuCopy[indexOfProductToEdit] = productBeingEdited
-
-            setMenu(menuCopy)
-        }
-
-        const resetMenu = () => { 
-            setMenu(fakeMenu.SMALL)
-            setProductSelected(EMPTY_PRODUCT);
-        }
 
         const orderContextValue = {
             isModeAdmin,

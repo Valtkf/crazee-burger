@@ -1,14 +1,11 @@
 import styled from "styled-components";
 import { theme } from "../../../../theme";
 
-export default function EmptyMenuAdmin({onReset}) {
+export default function EmptyMenuAdmin({ onReset }) {
     return ( 
         <EmptyMenuAdminStyled>
-            <div className="empty-menu">
-                <h1>Le menu est vide ?</h1>
-                <span>Cliquez ci-dessous pour le réinitialiser</span>
-                
-            </div>
+            <h1>Le menu est vide ?</h1>
+            <span>Cliquez ci-dessous pour le réinitialiser</span>
             <button className="primary-button-admin" onClick={onReset}>Générer de nouveaux produits</button>
         </EmptyMenuAdminStyled> 
     )

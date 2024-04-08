@@ -1,4 +1,3 @@
-import React from 'react'
 import styled from 'styled-components'
 import { theme } from '../../../theme'
 
@@ -21,8 +20,8 @@ const ImagePreviewStyled = styled.div`
         align-items: center;
 
         img{
-            width: 100%;
-            height: 100%;
+            width: 100px;
+            height: 100px;
             object-fit: contain;
             object-position: center;
         }
