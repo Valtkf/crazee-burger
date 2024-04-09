@@ -12,12 +12,12 @@ import BasketProducts from "./BasketProducts.jsx";
 export default function Basket() {
     const {basket} = useContext(OrderContext)
 
-    const isBasketEmpty = basket.length === 0
+    const isBasketEmpty = basket.length === 0;
 
     return ( 
         <BasketStyled>    
             <Total amountToPay={formatPrice(0)}/>
-            {isBasketEmpty ? <EmptyBasket /> : <BasketProducts />}
+            {isBasketEmpty ? <EmptyBasket /> : <BasketProducts basket={basket} />}
             <Footer />
         </BasketStyled>
     )
