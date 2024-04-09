@@ -5,16 +5,19 @@ import Footer from "./Footer.jsx"
 import EmptyBasket from "./EmptyBasket.jsx"
 import { useContext } from "react"
 import OrderContext from "../../../../../context/OrderContext.jsx"
+import BasketProducts from "./BasketProducts.jsx";
 
 
 
 export default function Basket() {
     const {basket} = useContext(OrderContext)
 
+    const isBasketEmpty = basket.length === 0
+
     return ( 
         <BasketStyled>    
             <Total amountToPay={formatPrice(0)}/>
-            <EmptyBasket basket={basket} />
+            {isBasketEmpty ? <EmptyBasket /> : <BasketProducts />}
             <Footer />
         </BasketStyled>
     )
