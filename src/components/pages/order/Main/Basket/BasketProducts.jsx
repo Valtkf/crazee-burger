@@ -1,12 +1,13 @@
 import React from "react"
 import styled from "styled-components"
+import BasketCard from "./BasketCard"
 
 
-export default function BasketProducts({ basket }) {
+export default function BasketProducts({ basket, index }) {
     return (
         <BasketProductsStyled>
             {basket.map((basketProduct) => (
-                <div>Basket</div>
+                <BasketCard key={index} {...basketProduct} />
             ))}
         </BasketProductsStyled>
         )
