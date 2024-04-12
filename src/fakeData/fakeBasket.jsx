@@ -98,7 +98,7 @@ export const LARGE = [
   {
     id: "7",
     imageSource: "/images/burger-bacon-egg.png",
-    title: "Burger Smoke Bdhbedhbeheb",
+    title: "Burger Smoke BBQ",
     price: 5.598,
     quantity: 1,
     isAvailable: true,
@@ -191,7 +191,7 @@ export const LARGE_WEIRD = [
   {
     id: "7",
     imageSource: "/images/burger-bacon-egg.png",
-    title: "Burger Smoke Bdhbedhbeheb",
+    title: "Burger Smoke BBQ",
     price: 5.598,
     quantity: 1,
     isAvailable: true,

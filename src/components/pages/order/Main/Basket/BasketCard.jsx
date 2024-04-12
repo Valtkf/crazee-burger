@@ -15,7 +15,7 @@ export default function BasketCard({ title, price, quantity, imageSource }) {
             </div>
             <div className="text-info">
                 <div className="left-info">
-                    <div className="titl^e">
+                    <div className="title">
                         <span>{title}</span>
                     </div>
                     <span className="price">{formatPrice(price)}</span>
@@ -42,11 +42,10 @@ const BasketCardStyled = styled.div`
     padding: 8px 16px;
     display: grid;
     grid-template-columns: 30% 1fr;
-    margin: 20px;
 
     border-radius: ${theme.borderRadius.round};
     background: ${theme.colors.background_white};
-    box-shadow: ${theme.shadows.medium};
+    box-shadow: ${theme.shadows.cardBasket};
 
     position: relative;
 
@@ -92,7 +91,8 @@ const BasketCardStyled = styled.div`
 
             .price{
                 font-size: ${theme.fonts.size.SM};
-                font-weight: ${theme.fonts.family.openSans};
+                font-weight: ${theme.fonts.weights.medium};
+                font-family: ${theme.fonts.family.openSans};
             }
         }
 

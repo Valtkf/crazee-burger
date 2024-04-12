@@ -7,7 +7,9 @@ export default function BasketProducts({ basket, index }) {
     return (
         <BasketProductsStyled>
             {basket.map((basketProduct) => (
+                <div className="basket-card" key={basketProduct.id} >
                 <BasketCard key={index} {...basketProduct} />
+                </div>
             ))}
         </BasketProductsStyled>
         )
@@ -20,14 +22,16 @@ const BasketProductsStyled = styled.div`
     overflow-y: scroll;
 
     .basket-card {
-        margin: 10px 16px;
+        margin: 20px 16px;
         height: 86px;
         box-sizing: border-box;
+
         :first-child {
-            margin-top: 20px;
+            //margin-top: 20px;
+            
         }
         :last-child {
-            margin-bottom: 20px;
+            //margin-bottom: 20px;
         }
     }
 `
