@@ -7,9 +7,8 @@ import EmptyMenuAdmin from "./EmptyMenuAdmin.jsx";
 import EmptyMenuClient from "./EmptyMenuClient.jsx";
 import OrderContext from "../../../../../context/OrderContext.jsx";
 import { checkIfProductIsClicked } from "./helper.jsx";
-import { EMPTY_PRODUCT } from "../../../../../enums/product.jsx";
+import { EMPTY_PRODUCT, IMAGE_COMING_SOON } from "../../../../../enums/product.jsx";
 
-const IMAGE_BY_DEFAULT = "/images/coming-soon.png"
 
 export default function Menu() {
     const {
@@ -53,7 +52,7 @@ export default function Menu() {
                     <Card
                         key={id}
                         title={title} 
-                        imageSource={imageSource ? imageSource : IMAGE_BY_DEFAULT} 
+                        imageSource={imageSource ? imageSource : IMAGE_COMING_SOON} 
                         leftDescription={formatPrice(price)}
                         hasDeleteButton={isModeAdmin}
                         onDelete={(event) => handleCardDelete(event, id)}

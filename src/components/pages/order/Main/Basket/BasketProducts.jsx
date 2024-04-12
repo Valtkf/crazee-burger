@@ -1,6 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import BasketCard from "./BasketCard"
+import { IMAGE_COMING_SOON } from "../../../../../enums/product"
 
 
 export default function BasketProducts({ basket, index }) {
@@ -8,7 +9,11 @@ export default function BasketProducts({ basket, index }) {
         <BasketProductsStyled>
             {basket.map((basketProduct) => (
                 <div className="basket-card" key={basketProduct.id} >
-                <BasketCard key={index} {...basketProduct} />
+                <BasketCard 
+                    key={index} 
+                    {...basketProduct} 
+                    imageSource={basketProduct.imageSource ? basketProduct.imageSource : IMAGE_COMING_SOON} 
+                />
                 </div>
             ))}
         </BasketProductsStyled>
