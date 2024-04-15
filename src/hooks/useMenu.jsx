@@ -3,7 +3,7 @@ import { deepClone } from "../utils/array"
 import { fakeMenu } from "../fakeData/fakeMenu"
 
 export const useMenu = () => { 
-    const [menu, setMenu] = useState(fakeMenu.MEDIUM)
+    const [menu, setMenu] = useState(fakeMenu.SMALL)
     const handleAdd = (newProduct) => {
         const menuCopy = deepClone(menu)
 
@@ -25,7 +25,7 @@ export const useMenu = () => {
         const indexOfProductToEdit = menu.findIndex(
             (menuProduct) => menuProduct.id === productBeingEdited.id
         )
-        console.log("indexOfProductToEdit", indexOfProductToEdit)
+        
         
         menuCopy[indexOfProductToEdit] = productBeingEdited
 

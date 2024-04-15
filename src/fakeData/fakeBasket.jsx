@@ -3,18 +3,27 @@ import {EMPTY_PRODUCT} from "../enums/product.jsx"
 export const EMPTY = []
 
 export const SMALL = [
-  {
-    id: "1",
-    title: "Burger Meal",
-    imageSource: "images/burger1.png",
-    quantity: 1,
-  },
+  // {
+  //   id: "1",
+  //   title: "Burger Meal",
+  //   imageSource: "images/burger1.png",
+  //   quantity: 1,
+  // },
+
+{ id: "1",
+  imageSource: "/images/burger-bacon-egg.png",
+  title: "Burger Smoke BBQ",
+  price: 5.598,
+  quantity: 0,
+  isAvailable: true,
+  isAdvertised: false,
+},
 ]
 
 export const MEDIUM = [
   {
     id: "1",
-    imageSource: "images/burger1.png",
+    imageSource: "images/burger-bacon-egg.png",
     title: "Burger Smoke BBQ",
     price: 5,
     quantity: 2,
