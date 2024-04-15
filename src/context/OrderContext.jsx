@@ -31,4 +31,5 @@ export default createContext ({
     titleEditRef: {},
 
     basket: [],
+    handleAddToBasket: () => {},
 })
