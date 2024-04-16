@@ -8,7 +8,7 @@ import EmptyMenuClient from "./EmptyMenuClient.jsx";
 import OrderContext from "../../../../../context/OrderContext.jsx";
 import { checkIfProductIsClicked } from "./helper.jsx";
 import { EMPTY_PRODUCT, IMAGE_COMING_SOON } from "../../../../../enums/product.jsx";
-import { findInArray } from "../../../../../utils/array.jsx";
+import { find } from "../../../../../utils/array.jsx";
 
 
 export default function Menu() {
@@ -30,7 +30,7 @@ export default function Menu() {
 
         await setIsCollapsed(false)
         await setCurrentTabSelected("edit")
-        const productSelected = findInArray(idProductClicked, menu)
+        const productSelected = find(idProductClicked, menu)
         await setProductSelected(productSelected)
         titleEditRef.current.focus()
     }
@@ -49,8 +49,7 @@ export default function Menu() {
 
     const handleAddButton = (event, idProductToAdd) => {
         event.stopPropagation()
-        const productToAdd = findInArray(idProductToAdd, menu)
-        console.log("productToAdd: ", productToAdd);
+        const productToAdd = find(idProductToAdd, menu)
         handleAddToBasket(productToAdd)
     }
 
