@@ -7,13 +7,11 @@ export const useBasket = () => {
 
     const handleAddToBasket = (productToAdd) => { 
         const basketCopy = deepClone(basket)
-
         const isProductAlreadyInBasket = find(productToAdd.id, basketCopy) !== undefined
             if(!isProductAlreadyInBasket) {
                 createNewProductInBasket(productToAdd, basketCopy, setBasket)
                 return
             }
-
                 incrementProductAlreadyInBasket(productToAdd, basketCopy)
             } 
 
@@ -41,5 +39,3 @@ export const useBasket = () => {
 
         return { basket, handleAddToBasket, handleDeleteBasketProduct }
     }
-
-    
