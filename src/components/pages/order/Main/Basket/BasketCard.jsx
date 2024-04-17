@@ -1,12 +1,13 @@
 import { MdDeleteForever } from 'react-icons/md'
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 import { theme } from "../../../../theme/index.jsx"
 import { formatPrice } from '../../../../../utils/maths.jsx'
 import PropTypes from 'prop-types';
 
-export default function BasketCard({ title, price, quantity, imageSource }) {
+
+export default function BasketCard({ title, price, quantity, imageSource, className, isModeAdmin }) {
     return (
-        <BasketCardStyled>
+        <BasketCardStyled className={className} isModeAdmin={isModeAdmin}>
             <div className="delete-button">
                 <MdDeleteForever className="icon" />
             </div>
@@ -34,6 +35,8 @@ BasketCard.propTypes = {
     imageSource: PropTypes.string.isRequired,
     quantity: PropTypes.string.isRequired,
     price:PropTypes.string.isRequired,
+    className:PropTypes.string.isRequired,
+    isModeAdmin: PropTypes.bool.isRequired,
 }
 
 const BasketCardStyled = styled.div`
@@ -112,7 +115,7 @@ const BasketCardStyled = styled.div`
         z-index: 1;
     }
 
-    :hover{
+    &:hover{
         .delete-button{
             border: none;
             box-sizing: border-box;
@@ -136,11 +139,11 @@ const BasketCardStyled = styled.div`
                 height: ${theme.fonts.size.P3};
             }
 
-            :hover{
+            &:hover{
                 .icon{
                     color: ${theme.colors.dark};
                 }
-                :active{
+                &:active{
                     .icon{
                         color: ${theme.colors.white};
                     }
