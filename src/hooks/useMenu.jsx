@@ -25,7 +25,7 @@ export const useMenu = () => {
         const indexOfProductToEdit = menu.findIndex(
             (menuProduct) => menuProduct.id === productBeingEdited.id
         )
-        console.log("indexOfProductToEdit", indexOfProductToEdit)
+        
         
         menuCopy[indexOfProductToEdit] = productBeingEdited
 
