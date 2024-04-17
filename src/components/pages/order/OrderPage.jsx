@@ -20,7 +20,7 @@ import { useBasket } from "../../../hooks/useBasket.jsx";
         const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT)
         const titleEditRef = useRef()
         const {menu, handleAdd, handleDelete, handleEdit, resetMenu} = useMenu()
-        const { basket, handleAddToBasket } = useBasket()
+        const { basket, handleAddToBasket, handleDeleteBasketProduct } = useBasket()
 
 
         const orderContextValue = {
@@ -44,6 +44,7 @@ import { useBasket } from "../../../hooks/useBasket.jsx";
             titleEditRef,
             basket,
             handleAddToBasket,
+            handleDeleteBasketProduct,
         }
         
         return (

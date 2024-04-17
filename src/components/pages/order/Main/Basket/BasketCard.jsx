@@ -5,10 +5,10 @@ import { formatPrice } from '../../../../../utils/maths.jsx'
 import PropTypes from 'prop-types';
 
 
-export default function BasketCard({ title, price, quantity, imageSource, className, isModeAdmin }) {
+export default function BasketCard({ title, price, quantity, imageSource, className, isModeAdmin, onDelete }) {
     return (
         <BasketCardStyled className={className} isModeAdmin={isModeAdmin}>
-            <div className="delete-button">
+            <div className="delete-button" onClick={onDelete}>
                 <MdDeleteForever className="icon" />
             </div>
             <div className="image">
@@ -40,6 +40,7 @@ BasketCard.propTypes = {
 }
 
 const BasketCardStyled = styled.div`
+    cursor: ${({ isModeAdmin }) => (isModeAdmin ? "pointer" : "auto")};
     //border: 1px solid red;
     height: 86px;
     padding: 8px 16px;
@@ -65,6 +66,7 @@ const BasketCardStyled = styled.div`
     }
     
     .text-info{
+        user-select: none;
         box-sizing: border-box;
         display: grid;
         grid-template-columns: 70% 1fr;
