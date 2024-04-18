@@ -35,10 +35,10 @@ const Form = React.forwardRef(function Form({ product, onSubmit, onChange, child
 export default Form 
 
 Form.propTypes = {
-    children: PropTypes.func.isRequired,
-    onSubmit: PropTypes.func.isRequired,
+    children: PropTypes.object.isRequired,
+    onSubmit: PropTypes.func,
     onChange: PropTypes.func.isRequired,
-    isSubmitted: PropTypes.bool.isRequired,
+    isSubmitted: PropTypes.bool,
     product: PropTypes.shape({
     imageSource: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,

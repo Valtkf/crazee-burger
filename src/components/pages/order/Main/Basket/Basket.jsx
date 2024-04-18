@@ -7,13 +7,14 @@ import { useContext } from "react"
 import OrderContext from "../../../../../context/OrderContext.jsx"
 import BasketProducts from "./BasketProducts.jsx";
 import { theme } from "../../../../theme/index.jsx"
+import { isEmpty } from "../../../../../utils/array.jsx"
 
 
 
 export default function Basket() {
     const { basket, isModeAdmin, handleDeleteBasketProduct } = useContext(OrderContext)
 
-    const isBasketEmpty = basket.length === 0;
+    const isBasketEmpty = isEmpty(basket);
 
     const totalToPay = basket.reduce((total, basketProduct) => {
         total += basketProduct.price * basketProduct.quantity
