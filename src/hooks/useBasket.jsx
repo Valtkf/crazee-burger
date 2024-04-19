@@ -7,7 +7,7 @@ export const useBasket = () => {
     
     const handleAddToBasket = (idProductToAdd) => { 
         const basketCopy = deepClone(basket)
-        const productAlreadyInBasket = findObjectById(idProductToAdd)
+        const productAlreadyInBasket = findObjectById(idProductToAdd, basketCopy)
 
         if(productAlreadyInBasket){
             incrementProductAlreadyInBasket(idProductToAdd, basketCopy)

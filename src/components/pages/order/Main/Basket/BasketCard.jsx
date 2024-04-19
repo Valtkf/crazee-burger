@@ -1,5 +1,5 @@
 import { MdDeleteForever } from 'react-icons/md'
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 import { theme } from "../../../../theme/index.jsx"
 import { formatPrice } from '../../../../../utils/maths.jsx'
 import PropTypes from 'prop-types';
@@ -11,11 +11,19 @@ export default function BasketCard({
     quantity, 
     imageSource, 
     className, 
-    isClickable, 
-    onDelete, 
+    isClickable,
+    onClick,
+    onDelete,
+    isSelected,
 }) {
     return (
-        <BasketCardStyled className={className} isClickable={isClickable}>
+        <BasketCardStyled 
+            className={className} 
+            isClickable={isClickable}
+            onClick={onClick}
+            isSelected={isSelected}
+        >
+
             <div className="delete-button" onClick={onDelete}>
                 <MdDeleteForever className="icon" />
             </div>
@@ -46,6 +54,8 @@ BasketCard.propTypes = {
     className:PropTypes.string.isRequired,
     isClickable: PropTypes.bool.isRequired,
     onDelete: PropTypes.bool,
+    onClick: PropTypes.bool,
+    isSelected: PropTypes.bool,
 }
 
 const BasketCardStyled = styled.div`
@@ -161,5 +171,14 @@ const BasketCardStyled = styled.div`
                 }
             }
         }
+    }
+    ${({ isClickable, isSelected, }) => isClickable && isSelected && selectedStyled}
+`
+
+const selectedStyled = css`
+    background: ${theme.colors.primary};
+    .price,
+    .quantity {
+        color: ${theme.colors.white};
     }
 `
