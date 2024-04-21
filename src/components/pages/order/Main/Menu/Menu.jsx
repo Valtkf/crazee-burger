@@ -8,7 +8,7 @@ import EmptyMenuClient from "./EmptyMenuClient.jsx";
 import OrderContext from "../../../../../context/OrderContext.jsx";
 import { checkIfProductIsClicked } from "./helper.jsx";
 import { EMPTY_PRODUCT, IMAGE_COMING_SOON } from "../../../../../enums/product.jsx";
-import { find } from "../../../../../utils/array.jsx";
+import { isEmpty } from "../../../../../utils/array.jsx";
 
 
 export default function Menu() {
@@ -19,26 +19,14 @@ export default function Menu() {
         resetMenu, 
         productSelected, 
         setProductSelected,
-        setIsCollapsed,
-        setCurrentTabSelected,
-        titleEditRef,
         handleAddToBasket,
         handleDeleteBasketProduct,
+        handleProductSelected,
     } = useContext(OrderContext)
     
-    const handleClick = async (idProductClicked) => {
+    const handleClick = (idProductClicked) => {
         if(!isModeAdmin) return
-
-        await setIsCollapsed(false)
-        await setCurrentTabSelected("edit")
-        const productSelected = find(idProductClicked, menu)
-        await setProductSelected(productSelected)
-        titleEditRef.current.focus()
-    }
-
-    if (menu.length === 0) {
-        if (!isModeAdmin) return <EmptyMenuClient />
-        return <EmptyMenuAdmin onReset={resetMenu} />
+        handleProductSelected(idProductClicked)
     }
 
     const handleCardDelete = (event, idProductToDelete) => {
@@ -46,13 +34,16 @@ export default function Menu() {
         handleDelete(idProductToDelete)
         handleDeleteBasketProduct(idProductToDelete)
         idProductToDelete === productSelected.id && setProductSelected(EMPTY_PRODUCT)
-        titleEditRef.current.focus()
     }
 
     const handleAddButton = (event, idProductToAdd) => {
         event.stopPropagation()
-        const productToAdd = find(idProductToAdd, menu)
-        handleAddToBasket(productToAdd)
+        handleAddToBasket(idProductToAdd)
+    }
+
+    if (isEmpty(menu)) {
+        if (!isModeAdmin) return <EmptyMenuClient />
+        return <EmptyMenuAdmin onReset={resetMenu} />
     }
 
     return (
@@ -82,9 +73,8 @@ const MenuStyled = styled.div`
     box-shadow: -8px 8px 20px 0px rgb(0 0 0 / 20%) inset;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    //grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     grid-row-gap: 60px;
-    padding: 50px 50px 150px;
+    padding: 50px 50px 280px;
     justify-items: center;
     overflow-y: scroll;
 `;

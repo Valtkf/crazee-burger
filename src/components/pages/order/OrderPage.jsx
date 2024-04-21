@@ -8,6 +8,7 @@ import OrderContext from "../../../context/OrderContext";
 import { EMPTY_PRODUCT } from "../../../enums/product.jsx";
 import { useMenu } from "../../../hooks/useMenu.jsx"
 import { useBasket } from "../../../hooks/useBasket.jsx";
+import { findObjectById } from "../../../utils/array.jsx";
 
 
     export default function OrderPage() {
@@ -21,6 +22,14 @@ import { useBasket } from "../../../hooks/useBasket.jsx";
         const titleEditRef = useRef()
         const {menu, handleAdd, handleDelete, handleEdit, resetMenu} = useMenu()
         const { basket, handleAddToBasket, handleDeleteBasketProduct } = useBasket()
+
+        const handleProductSelected = async (idProductClicked) => {
+            const productSelected = findObjectById(idProductClicked, menu)
+            await setIsCollapsed(false)
+            await setCurrentTabSelected("edit")
+            await setProductSelected(productSelected)
+        titleEditRef.current.focus()
+        }
 
 
         const orderContextValue = {
@@ -45,6 +54,7 @@ import { useBasket } from "../../../hooks/useBasket.jsx";
             basket,
             handleAddToBasket,
             handleDeleteBasketProduct,
+            handleProductSelected,
         }
         
         return (

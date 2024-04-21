@@ -5,6 +5,7 @@ import Form from "./Form.jsx";
 import SubmitMessage from "./SubmitMessage.jsx";
 import Button from "../../../reusable-ui/Button.jsx";
 import { useSuccessMessage } from "../../../../hooks/useDisplaySuccessMessage.jsx";
+import { replaceFrenchCommaWithDot } from "../../../../utils/maths.jsx";
 
 export default function AddForm() {
     const {handleAdd} = useContext(OrderContext)
@@ -16,6 +17,7 @@ export default function AddForm() {
         const newProductToAdd = {
             ...newProduct,
             id : crypto.randomUUID(),
+            price: replaceFrenchCommaWithDot(newProduct.price)
         }
         handleAdd(newProductToAdd)
         setNewProduct(EMPTY_PRODUCT)

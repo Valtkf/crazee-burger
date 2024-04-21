@@ -5,9 +5,25 @@ import { formatPrice } from '../../../../../utils/maths.jsx'
 import PropTypes from 'prop-types';
 
 
-export default function BasketCard({ title, price, quantity, imageSource, className, isModeAdmin, onDelete }) {
+export default function BasketCard({ 
+    title, 
+    price, 
+    quantity, 
+    imageSource, 
+    className, 
+    isClickable,
+    onClick,
+    onDelete,
+    isSelected,
+}) {
     return (
-        <BasketCardStyled className={className} isModeAdmin={isModeAdmin}>
+        <BasketCardStyled 
+            className={className} 
+            isClickable={isClickable}
+            onClick={onClick}
+            isSelected={isSelected}
+        >
+
             <div className="delete-button" onClick={onDelete}>
                 <MdDeleteForever className="icon" />
             </div>
@@ -33,15 +49,17 @@ export default function BasketCard({ title, price, quantity, imageSource, classN
 BasketCard.propTypes = {
     title: PropTypes.string.isRequired,
     imageSource: PropTypes.string.isRequired,
-    quantity: PropTypes.string.isRequired,
+    quantity: PropTypes.number.isRequired,
     price:PropTypes.string.isRequired,
     className:PropTypes.string.isRequired,
-    isModeAdmin: PropTypes.bool.isRequired,
+    isClickable: PropTypes.bool.isRequired,
+    onDelete: PropTypes.bool,
+    onClick: PropTypes.bool,
+    isSelected: PropTypes.bool,
 }
 
 const BasketCardStyled = styled.div`
-    cursor: ${({ isModeAdmin }) => (isModeAdmin ? "pointer" : "auto")};
-    //border: 1px solid red;
+    cursor: ${({ isClickable }) => (isClickable ? "pointer" : "auto")};
     height: 86px;
     padding: 8px 16px;
     display: grid;
@@ -152,5 +170,14 @@ const BasketCardStyled = styled.div`
                 }
             }
         }
+    }
+    ${({ isClickable, isSelected, }) => isClickable && isSelected && selectedStyled}
+`
+
+const selectedStyled = css`
+    background: ${theme.colors.primary};
+    .price,
+    .quantity {
+        color: ${theme.colors.white};
     }
 `
