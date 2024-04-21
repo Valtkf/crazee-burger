@@ -8,7 +8,7 @@ import EmptyMenuClient from "./EmptyMenuClient.jsx";
 import OrderContext from "../../../../../context/OrderContext.jsx";
 import { checkIfProductIsClicked } from "./helper.jsx";
 import { EMPTY_PRODUCT, IMAGE_COMING_SOON } from "../../../../../enums/product.jsx";
-import { findObjectById, isEmpty } from "../../../../../utils/array.jsx";
+import { isEmpty } from "../../../../../utils/array.jsx";
 
 
 export default function Menu() {
@@ -19,26 +19,14 @@ export default function Menu() {
         resetMenu, 
         productSelected, 
         setProductSelected,
-        setIsCollapsed,
-        setCurrentTabSelected,
-        titleEditRef,
         handleAddToBasket,
         handleDeleteBasketProduct,
+        handleProductSelected,
     } = useContext(OrderContext)
     
-    const handleClick = async (idProductClicked) => {
+    const handleClick = (idProductClicked) => {
         if(!isModeAdmin) return
-
-        await setIsCollapsed(false)
-        await setCurrentTabSelected("edit")
-        const productSelected = findObjectById(idProductClicked, menu)
-        await setProductSelected(productSelected)
-        titleEditRef.current.focus()
-    }
-
-    if (isEmpty(menu)) {
-        if (!isModeAdmin) return <EmptyMenuClient />
-        return <EmptyMenuAdmin onReset={resetMenu} />
+        handleProductSelected(idProductClicked)
     }
 
     const handleCardDelete = (event, idProductToDelete) => {
@@ -46,12 +34,16 @@ export default function Menu() {
         handleDelete(idProductToDelete)
         handleDeleteBasketProduct(idProductToDelete)
         idProductToDelete === productSelected.id && setProductSelected(EMPTY_PRODUCT)
-        titleEditRef.current.focus()
     }
 
     const handleAddButton = (event, idProductToAdd) => {
         event.stopPropagation()
         handleAddToBasket(idProductToAdd)
+    }
+
+    if (isEmpty(menu)) {
+        if (!isModeAdmin) return <EmptyMenuClient />
+        return <EmptyMenuAdmin onReset={resetMenu} />
     }
 
     return (
