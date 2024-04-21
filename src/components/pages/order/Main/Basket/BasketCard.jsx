@@ -60,7 +60,6 @@ BasketCard.propTypes = {
 
 const BasketCardStyled = styled.div`
     cursor: ${({ isClickable }) => (isClickable ? "pointer" : "auto")};
-    //border: 1px solid red;
     height: 86px;
     padding: 8px 16px;
     display: grid;
