@@ -19,3 +19,12 @@ export const createUser = (userId) => {
     }
     setDoc(docRef, newDoc)
 }
+
+export const authentificateUser = async (userId) => {
+    const existingUser = await getUser(userId)
+
+    if (!existingUser) {
+        createUser(userId)
+    }
+    return existingUser
+}

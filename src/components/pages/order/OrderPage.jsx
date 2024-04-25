@@ -9,6 +9,7 @@ import { EMPTY_PRODUCT } from "../../../enums/product.jsx";
 import { useMenu } from "../../../hooks/useMenu.jsx"
 import { useBasket } from "../../../hooks/useBasket.jsx";
 import { findObjectById } from "../../../utils/array.jsx";
+import { getUser } from "../../../api/user.jsx"
 
 
     export default function OrderPage() {
@@ -30,7 +31,6 @@ import { findObjectById } from "../../../utils/array.jsx";
             await setProductSelected(productSelected)
         titleEditRef.current.focus()
         }
-
 
         const orderContextValue = {
             isModeAdmin,
@@ -56,7 +56,10 @@ import { findObjectById } from "../../../utils/array.jsx";
             handleDeleteBasketProduct,
             handleProductSelected,
         }
-        
+
+        console.log('import.meta.env.REACT_APP_API_KEY: ', import.meta.env.VITE_API_KEY);
+        getUser("Max")
+
         return (
             <OrderContext.Provider value={orderContextValue}>
                 <OrderPageStyled>
