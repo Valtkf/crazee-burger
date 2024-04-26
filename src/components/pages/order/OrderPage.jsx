@@ -23,6 +23,8 @@ import { getUser } from "../../../api/user.jsx"
         const titleEditRef = useRef()
         const {menu, handleAdd, handleDelete, handleEdit, resetMenu} = useMenu()
         const { basket, handleAddToBasket, handleDeleteBasketProduct } = useBasket()
+        
+
 
         const handleProductSelected = async (idProductClicked) => {
             const productSelected = findObjectById(idProductClicked, menu)
@@ -55,6 +57,7 @@ import { getUser } from "../../../api/user.jsx"
             handleAddToBasket,
             handleDeleteBasketProduct,
             handleProductSelected,
+            username,
         }
 
         console.log('import.meta.env.REACT_APP_API_KEY: ', import.meta.env.VITE_API_KEY);

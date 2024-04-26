@@ -8,7 +8,7 @@ import { useSuccessMessage } from "../../../../hooks/useDisplaySuccessMessage.js
 import { replaceFrenchCommaWithDot } from "../../../../utils/maths.jsx";
 
 export default function AddForm() {
-    const {handleAdd} = useContext(OrderContext)
+    const { username,handleAdd } = useContext(OrderContext)
     const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
     const {isSubmitted, displaySuccessMessage} = useSuccessMessage()
 
@@ -19,7 +19,7 @@ export default function AddForm() {
             id : crypto.randomUUID(),
             price: replaceFrenchCommaWithDot(newProduct.price)
         }
-        handleAdd(newProductToAdd)
+        handleAdd(newProductToAdd, username)
         setNewProduct(EMPTY_PRODUCT)
         displaySuccessMessage()
     }
