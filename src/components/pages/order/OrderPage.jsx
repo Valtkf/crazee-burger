@@ -3,13 +3,14 @@ import styled from "styled-components";
 import Main from "./Main/Main";
 import { theme } from "../../theme";
 import Navbar from "./Navbar/Navbar";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import OrderContext from "../../../context/OrderContext";
 import { EMPTY_PRODUCT } from "../../../enums/product.jsx";
 import { useMenu } from "../../../hooks/useMenu.jsx"
 import { useBasket } from "../../../hooks/useBasket.jsx";
 import { findObjectById } from "../../../utils/array.jsx";
 import { getUser } from "../../../api/user.jsx"
+import { getMenu } from "../../../api/product.jsx";
 
 
     export default function OrderPage() {
@@ -21,7 +22,7 @@ import { getUser } from "../../../api/user.jsx"
         const [currentTabSelected, setCurrentTabSelected] = useState("add")
         const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT)
         const titleEditRef = useRef()
-        const {menu, handleAdd, handleDelete, handleEdit, resetMenu} = useMenu()
+        const {menu, setMenu, handleAdd, handleDelete, handleEdit, resetMenu} = useMenu()
         const { basket, handleAddToBasket, handleDeleteBasketProduct } = useBasket()
         
 
@@ -33,6 +34,16 @@ import { getUser } from "../../../api/user.jsx"
             await setProductSelected(productSelected)
         titleEditRef.current.focus()
         }
+
+        const initialiseMenu = async () => {
+            const menuReceived = await getMenu(username)
+            setMenu(menuReceived)
+        }
+
+        useEffect(() =>{
+            initialiseMenu()
+        }, [])
+        
 
         const orderContextValue = {
             isModeAdmin,
