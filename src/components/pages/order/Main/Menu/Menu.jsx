@@ -9,6 +9,7 @@ import OrderContext from "../../../../../context/OrderContext.jsx";
 import { checkIfProductIsClicked } from "./helper.jsx";
 import { EMPTY_PRODUCT, IMAGE_COMING_SOON } from "../../../../../enums/product.jsx";
 import { isEmpty } from "../../../../../utils/array.jsx";
+import Loader from "./Loader.jsx";
 
 
 export default function Menu() {
@@ -41,6 +42,8 @@ export default function Menu() {
         event.stopPropagation()
         handleAddToBasket(idProductToAdd)
     }
+
+    if (menu === undefined) return <Loader/>
 
     if (isEmpty(menu)) {
         if (!isModeAdmin) return <EmptyMenuClient />
