@@ -10,7 +10,7 @@ import { authentificateUser } from '../../../api/user';
 import Welcome from './Welcome';
 
 export default function LoginForm() {      
-    const [username, setUsername] = useState("bob")
+    const [username, setUsername] = useState("")
     const navigate = useNavigate()
         
     const handleSubmit = async (event) => {
