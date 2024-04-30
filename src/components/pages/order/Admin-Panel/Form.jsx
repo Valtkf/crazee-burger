@@ -6,7 +6,7 @@ import { getInputTextsConfig } from "./inputTextConfig.jsx";
 import PropTypes from 'prop-types';
 
 
-const Form = React.forwardRef(function Form({ product, onSubmit, onChange, children }, ref) {
+const Form = React.forwardRef(function Form({ product, onSubmit, onChange, children, onFocus, onBlur }, ref) {
 
     const inputTexts = getInputTextsConfig(product)
 
@@ -23,6 +23,8 @@ const Form = React.forwardRef(function Form({ product, onSubmit, onChange, child
                         onChange={onChange}
                         Icon={input.Icon}
                         version="minimalist"
+                        onFocus={onFocus}
+                        onBlur={onBlur}
                         ref={ref && input.name === "title" ? ref : null}
                     />
                 ))}
@@ -37,6 +39,8 @@ export default Form
 Form.propTypes = {
     children: PropTypes.object.isRequired,
     onSubmit: PropTypes.func,
+    onFocus: PropTypes.func,
+    onBlur: PropTypes.func,
     onChange: PropTypes.func.isRequired,
     isSubmitted: PropTypes.bool,
     product: PropTypes.shape({
@@ -72,7 +76,7 @@ const FormStyled = styled.form`
         align-items: center;
         
         .submit-button{
-            width: 50%;
+            width: 100%;
             cursor: pointer;
         }
         

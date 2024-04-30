@@ -2,7 +2,7 @@ import React from "react";
 import styled, { css } from "styled-components";
 import { theme } from "../theme";
 
-const TextInput = React.forwardRef(({ value, onChange, Icon, className, version="normal", ...extraProps }, ref) => {
+const TextInput = React.forwardRef (({ value, onChange, Icon, className, version="normal", ...extraProps }, ref) => {
     return (
         <TextInputStyled className={className} version={version}>
             <div className="icon">{Icon && Icon}</div>
@@ -11,11 +11,14 @@ const TextInput = React.forwardRef(({ value, onChange, Icon, className, version=
     )
 })
 
+TextInput.displayName = 'TextInput';
+
 export default TextInput
 const TextInputStyled = styled.div`
         border-radius: ${theme.borderRadius.round};
         display: flex;
         align-items: center;
+        resize: vertical;
 
         .icon{
             font-size: ${theme.fonts.size.P0};
@@ -61,7 +64,7 @@ const extraNormalStyle = css`
 const extraMinimalistStyle = css`
     background: ${theme.colors.background_white};
     padding: 8px 16px 8px 24px;
-    width: 645px;
+    width: 100%;
     
 
     input{

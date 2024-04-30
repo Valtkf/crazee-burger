@@ -71,7 +71,6 @@ import { getMenu } from "../../../api/product.jsx";
             username,
         }
 
-        console.log('import.meta.env.REACT_APP_API_KEY: ', import.meta.env.VITE_API_KEY);
         getUser("Max")
 
         return (
