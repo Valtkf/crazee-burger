@@ -11,6 +11,7 @@ import { useBasket } from "../../../hooks/useBasket.jsx";
 import { findObjectById } from "../../../utils/array.jsx";
 import { getUser } from "../../../api/user.jsx"
 import { getMenu } from "../../../api/product.jsx";
+import { getLocalStorage } from "../../../utils/window.jsx";
 
 
     export default function OrderPage() {
@@ -23,7 +24,7 @@ import { getMenu } from "../../../api/product.jsx";
         const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT)
         const titleEditRef = useRef()
         const {menu, setMenu, handleAdd, handleDelete, handleEdit, resetMenu} = useMenu()
-        const { basket, handleAddToBasket, handleDeleteBasketProduct } = useBasket()
+        const { basket, setBasket, handleAddToBasket, handleDeleteBasketProduct } = useBasket()
         
 
 
@@ -40,8 +41,17 @@ import { getMenu } from "../../../api/product.jsx";
             setMenu(menuReceived)
         }
 
+        const initialiseBasket = () => { 
+            const basketReceived = getLocalStorage(username)
+            setBasket(basketReceived)
+        }
+
         useEffect(() =>{
             initialiseMenu()
+        }, [])
+        
+        useEffect(() =>{
+            initialiseBasket()
         }, [])
         
 
@@ -69,6 +79,7 @@ import { getMenu } from "../../../api/product.jsx";
             handleDeleteBasketProduct,
             handleProductSelected,
             username,
+            setBasket,
         }
 
         getUser("Max")

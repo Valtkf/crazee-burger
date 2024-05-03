@@ -50,7 +50,7 @@ BasketCard.propTypes = {
     title: PropTypes.string.isRequired,
     imageSource: PropTypes.string.isRequired,
     quantity: PropTypes.number.isRequired,
-    price:PropTypes.number.isRequired,
+    price:PropTypes.number,
     className:PropTypes.string,
     $isClickable: PropTypes.bool.isRequired,
     onDelete: PropTypes.func,
