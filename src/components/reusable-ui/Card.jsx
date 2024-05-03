@@ -11,16 +11,16 @@ export default function Card({
     hasDeleteButton,
     onDelete,
     onClick,
-    isHoverable,
-    isSelected,
+    $isHoverable,
+    $isSelected,
     onAdd,
 }) {
     return ( 
         <CardStyled 
             className="produit" 
             onClick={onClick} 
-            isHoverable={isHoverable} 
-            isSelected={isSelected}
+            $isHoverable={$isHoverable} 
+            $isSelected={$isSelected}
         >
             <div className="card" >
                 {hasDeleteButton && (
@@ -57,12 +57,12 @@ Card.propTypes = {
     onDelete: PropTypes.func,
     onClick: PropTypes.func,
     onAdd:PropTypes.func,
-    isHoverable: PropTypes.bool,
-    isSelected: PropTypes.bool,
+    $isHoverable: PropTypes.bool,
+    $isSelected: PropTypes.bool,
 };
 
 const CardStyled = styled.div`
-    ${({ isHoverable, isModeAdmin }) => (isHoverable || !isModeAdmin) && hoverableStyle}
+    ${({ $isHoverable, isModeAdmin }) => ($isHoverable || !isModeAdmin) && hoverableStyle}
     border-radius: ${theme.borderRadius.extraRound};
 
     .card {
@@ -176,7 +176,7 @@ const CardStyled = styled.div`
             }
         }
 
-        ${({ isHoverable, isSelected }) => isHoverable && isSelected && selectedStyle}
+        ${({ $isHoverable, $isSelected }) => $isHoverable && $isSelected && selectedStyle}
     }
 `;
 

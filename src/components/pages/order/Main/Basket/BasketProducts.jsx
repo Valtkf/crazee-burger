@@ -33,10 +33,10 @@ export default function BasketProducts() {
                             {...menuProduct} 
                             imageSource={menuProduct.imageSource ? menuProduct.imageSource : IMAGE_COMING_SOON}
                             quantity={basketProduct.quantity}
-                            isClickable={isModeAdmin}
+                            $isClickable={isModeAdmin}
                             onDelete={(event)=> handleOnDelete(event, basketProduct.id)}
                             onClick={isModeAdmin ? () => handleProductSelected (basketProduct.id) : null}
-                            isSelected={checkIfProductIsClicked(basketProduct.id, productSelected.id)}
+                            $isSelected={checkIfProductIsClicked(basketProduct.id, productSelected.id)}
                         />
                     </div>
                 )

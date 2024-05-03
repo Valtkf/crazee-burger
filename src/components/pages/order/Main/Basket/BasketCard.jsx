@@ -11,17 +11,17 @@ export default function BasketCard({
     quantity, 
     imageSource, 
     className, 
-    isClickable,
+    $isClickable,
     onClick,
     onDelete,
-    isSelected,
+    $isSelected,
 }) {
     return (
         <BasketCardStyled 
             className={className} 
-            isClickable={isClickable}
+            $isClickable={$isClickable}
             onClick={onClick}
-            isSelected={isSelected}
+            $isSelected={$isSelected}
         >
 
             <div className="delete-button" onClick={onDelete}>
@@ -52,14 +52,14 @@ BasketCard.propTypes = {
     quantity: PropTypes.number.isRequired,
     price:PropTypes.string.isRequired,
     className:PropTypes.string.isRequired,
-    isClickable: PropTypes.bool.isRequired,
+    $isClickable: PropTypes.bool.isRequired,
     onDelete: PropTypes.bool,
     onClick: PropTypes.bool,
-    isSelected: PropTypes.bool,
+    $isSelected: PropTypes.bool,
 }
 
 const BasketCardStyled = styled.div`
-    cursor: ${({ isClickable }) => (isClickable ? "pointer" : "auto")};
+    cursor: ${({ $isClickable }) => ($isClickable ? "pointer" : "auto")};
     height: 86px;
     padding: 8px 16px;
     display: grid;
@@ -171,7 +171,7 @@ const BasketCardStyled = styled.div`
             }
         }
     }
-    ${({ isClickable, isSelected, }) => isClickable && isSelected && selectedStyled}
+    ${({ $isClickable, $isSelected, }) => $isClickable && $isSelected && selectedStyled}
 `
 
 const selectedStyled = css`
