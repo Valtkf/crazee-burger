@@ -3,17 +3,17 @@ export const deepClone = (array) => {
 }
 
 export const findObjectById = (id, array) => { 
-    return array.find((itemInArray) => itemInArray.id === id)
+    return Array.isArray(array) && array.find((itemInArray) => itemInArray.id === id)
 }
 
 export const findIndexById = (idWidthUnknowIndex, array) => {
-    return array.findIndex((itemInArray) => itemInArray.id === idWidthUnknowIndex)
+    return Array.isArray(array) && array.findIndex((itemInArray) => itemInArray.id === idWidthUnknowIndex)
 }
 
 export const removeObjectById = (idOfItemToRemove, array) => {
-    return array.filter((item) => item.id !== idOfItemToRemove)
+    return Array.isArray(array) && array.filter((item) => item.id !== idOfItemToRemove)
 }
 
 export const isEmpty = (array) => { 
-    return array.length === 0
+    return !Array.isArray(array) || array.length === 0
 }

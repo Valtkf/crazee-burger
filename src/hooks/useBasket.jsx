@@ -24,12 +24,12 @@ export const useBasket = () => {
                 setLocalStorage(username, basketCopy)
             }
 
-            const createNewBasketProduct = (idProductToAdd, basketCopy, setBasket, username) => {
+            const createNewBasketProduct = (idProductToAdd, basketCopy, setBasketFn, username) => {
                 const newBasketProduct = { id: idProductToAdd, quantity: 1 }
-                const newBasket = [newBasketProduct, ...basketCopy]
-                setBasket(newBasket)
+                const newBasket = Array.isArray(basketCopy) ? [newBasketProduct, ...basketCopy] : [newBasketProduct]
+                setBasketFn(newBasket)
                 setLocalStorage(username, newBasket)
-            }
+            }            
 
         const handleDeleteBasketProduct = (idBasketProduct) => { 
             const basketCopy = deepClone(basket)
