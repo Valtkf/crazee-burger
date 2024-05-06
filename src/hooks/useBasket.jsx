@@ -13,8 +13,7 @@ export const useBasket = () => {
             incrementProductAlreadyInBasket(idProductToAdd, basketCopy, username)
             return
         }
-
-        createNewBasketProduct(idProductToAdd, basketCopy, setBasket)
+            createNewBasketProduct(idProductToAdd, basketCopy, setBasket, username)
     }
 
             const incrementProductAlreadyInBasket = (idProductToAdd, basketCopy, username) => {
@@ -24,19 +23,19 @@ export const useBasket = () => {
                 setLocalStorage(username, basketCopy)
             }
 
-            const createNewBasketProduct = (idProductToAdd, basketCopy, setBasketFn, username) => {
+            const createNewBasketProduct = (idProductToAdd, basketCopy, setBasket, username) => {
                 const newBasketProduct = { id: idProductToAdd, quantity: 1 }
                 const newBasket = Array.isArray(basketCopy) ? [newBasketProduct, ...basketCopy] : [newBasketProduct]
-                setBasketFn(newBasket)
-                setLocalStorage(username, newBasket)
+                setBasket(newBasket)
+                if (username) {
+                    setLocalStorage(username, newBasket)
+                }
             }            
 
-        const handleDeleteBasketProduct = (idBasketProduct) => { 
-            const basketCopy = deepClone(basket)
-
-            const basketUpdated = removeObjectById(idBasketProduct, basketCopy)
-
+        const handleDeleteBasketProduct = (idBasketProduct, username) => { 
+            const basketUpdated = removeObjectById(idBasketProduct, basket)
             setBasket(basketUpdated)
+            setLocalStorage(username, basketUpdated)
         }    
 
         return { basket, setBasket, handleAddToBasket, handleDeleteBasketProduct }

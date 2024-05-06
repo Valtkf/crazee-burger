@@ -7,13 +7,13 @@ export const findObjectById = (id, array) => {
 }
 
 export const findIndexById = (idWidthUnknowIndex, array) => {
-    return Array.isArray(array) && array.findIndex((itemInArray) => itemInArray.id === idWidthUnknowIndex)
+    return array.findIndex((itemInArray) => itemInArray.id === idWidthUnknowIndex)
 }
 
 export const removeObjectById = (idOfItemToRemove, array) => {
-    return Array.isArray(array) && array.filter((item) => item.id !== idOfItemToRemove)
+    return array.filter((item) => item.id !== idOfItemToRemove)
 }
 
 export const isEmpty = (array) => { 
-    return !Array.isArray(array) || array.length === 0
+    return array.length === 0
 }

@@ -10,8 +10,7 @@ import { useMenu } from "../../../hooks/useMenu.jsx"
 import { useBasket } from "../../../hooks/useBasket.jsx";
 import { findObjectById } from "../../../utils/array.jsx";
 import { getUser } from "../../../api/user.jsx"
-import { getMenu } from "../../../api/product.jsx";
-import { getLocalStorage } from "../../../utils/window.jsx";
+import { initialiseUserSession } from "./helpers/initialiseUserSession.jsx";
 
 
     export default function OrderPage() {
@@ -36,23 +35,19 @@ import { getLocalStorage } from "../../../utils/window.jsx";
         titleEditRef.current.focus()
         }
 
-        const initialiseMenu = async () => {
-            const menuReceived = await getMenu(username)
-            setMenu(menuReceived)
-        }
+        // const initialiseMenu = async () => {
+        //     const menuReceived = await getMenu(username)
+        //     setMenu(menuReceived)
+        // }
 
-        const initialiseBasket = () => { 
-            const basketReceived = getLocalStorage(username)
-            console.log("basketReceived: ", basketReceived);
-            setBasket(basketReceived)
-        }
+        // const initialiseBasket = () => { 
+        //     const basketReceived = getLocalStorage(username)
+        //     console.log("basketReceived: ", basketReceived);
+        //     setBasket(basketReceived)
+        // }
 
         useEffect(() =>{
-            initialiseMenu()
-        }, [])
-        
-        useEffect(() =>{
-            initialiseBasket()
+            initialiseUserSession(username, setMenu, setBasket)
         }, [])
         
 
