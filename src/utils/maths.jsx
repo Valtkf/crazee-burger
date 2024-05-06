@@ -22,7 +22,7 @@ export function replaceFrenchCommaWithDot(price) {
 export const calculateTotalToPay = (basket, menu) => {
   if (!basket || basket.length === 0) return 0;
 
-  return !basket || basket.reduce((total, basketProduct) => {
+  return basket.reduce((total, basketProduct) => {
       const menuProduct = findObjectById(basketProduct.id, menu)
       if (!menuProduct || isNaN(menuProduct.price)) return total
       total += menuProduct.price * basketProduct.quantity

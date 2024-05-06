@@ -43,6 +43,7 @@ import { getLocalStorage } from "../../../utils/window.jsx";
 
         const initialiseBasket = () => { 
             const basketReceived = getLocalStorage(username)
+            console.log("basketReceived: ", basketReceived);
             setBasket(basketReceived)
         }
 
