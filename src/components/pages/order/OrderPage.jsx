@@ -9,7 +9,6 @@ import { EMPTY_PRODUCT } from "../../../enums/product.jsx";
 import { useMenu } from "../../../hooks/useMenu.jsx"
 import { useBasket } from "../../../hooks/useBasket.jsx";
 import { findObjectById } from "../../../utils/array.jsx";
-import { getUser } from "../../../api/user.jsx"
 import { initialiseUserSession } from "./helpers/initialiseUserSession.jsx";
 
 
@@ -35,20 +34,9 @@ import { initialiseUserSession } from "./helpers/initialiseUserSession.jsx";
         titleEditRef.current.focus()
         }
 
-        // const initialiseMenu = async () => {
-        //     const menuReceived = await getMenu(username)
-        //     setMenu(menuReceived)
-        // }
-
-        // const initialiseBasket = () => { 
-        //     const basketReceived = getLocalStorage(username)
-        //     console.log("basketReceived: ", basketReceived);
-        //     setBasket(basketReceived)
-        // }
-
         useEffect(() =>{
             initialiseUserSession(username, setMenu, setBasket)
-        }, [])
+        }, [setBasket, setMenu, username])
         
 
         const orderContextValue = {
@@ -77,8 +65,6 @@ import { initialiseUserSession } from "./helpers/initialiseUserSession.jsx";
             username,
             setBasket,
         }
-
-        getUser("Max")
 
         return (
             <OrderContext.Provider value={orderContextValue}>
