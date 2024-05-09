@@ -10,6 +10,7 @@ import { checkIfProductIsClicked } from "../Menu/helper"
 
 export default function BasketProducts() {
     const { 
+        username,
         basket,
         isModeAdmin,
         handleDeleteBasketProduct, 
@@ -20,7 +21,7 @@ export default function BasketProducts() {
 
     const handleOnDelete = (event, id) => {
         event.stopPropagation()
-        handleDeleteBasketProduct(id)
+        handleDeleteBasketProduct(id, username)
     }
 
     return (
@@ -30,13 +31,15 @@ export default function BasketProducts() {
                 return (
                     <div className="basket-card" key={basketProduct.id} >
                         <BasketCard 
-                            {...menuProduct} 
-                            imageSource={menuProduct.imageSource ? menuProduct.imageSource : IMAGE_COMING_SOON}
+                            {...(menuProduct || {})} 
+                            imageSource={menuProduct ? (menuProduct.imageSource || IMAGE_COMING_SOON) : IMAGE_COMING_SOON}
                             quantity={basketProduct.quantity}
-                            isClickable={isModeAdmin}
+                            title={menuProduct ? menuProduct.title : ""}
+                            price={menuProduct ? parseFloat(menuProduct.price) : 0}
+                            $isClickable={isModeAdmin}
                             onDelete={(event)=> handleOnDelete(event, basketProduct.id)}
                             onClick={isModeAdmin ? () => handleProductSelected (basketProduct.id) : null}
-                            isSelected={checkIfProductIsClicked(basketProduct.id, productSelected.id)}
+                            $isSelected={checkIfProductIsClicked(basketProduct.id, productSelected.id)}
                         />
                     </div>
                 )

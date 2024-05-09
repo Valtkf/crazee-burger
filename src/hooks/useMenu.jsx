@@ -1,25 +1,28 @@
 import { useState } from "react"
 import { deepClone } from "../utils/array"
 import { fakeMenu } from "../fakeData/fakeMenu"
+import { syncBothMenus } from "../api/product"
 
 export const useMenu = () => { 
-    const [menu, setMenu] = useState(fakeMenu.MEDIUM)
-    const handleAdd = (newProduct) => {
+    const [menu, setMenu] = useState()
+    const handleAdd = (newProduct, username) => {
         const menuCopy = deepClone(menu)
 
         const menuUpdated = [newProduct,...menuCopy]
 
         setMenu(menuUpdated)
+        syncBothMenus(username, menuUpdated)
     }
 
-    const handleDelete = (idOfProductToDelete) => { 
+    const handleDelete = (idOfProductToDelete, username) => { 
         const menuCopy = deepClone(menu)
         const menuUpdated = menuCopy.filter((product) => product.id !== idOfProductToDelete)
 
         setMenu(menuUpdated)
+        syncBothMenus(username, menuUpdated)
     }
 
-    const handleEdit = (productBeingEdited) => {
+    const handleEdit = (productBeingEdited, username) => {
         const menuCopy = deepClone(menu)
 
         const indexOfProductToEdit = menu.findIndex(
@@ -30,11 +33,13 @@ export const useMenu = () => {
         menuCopy[indexOfProductToEdit] = productBeingEdited
 
         setMenu(menuCopy)
+        syncBothMenus(username, menuCopy)
     }
 
-    const resetMenu = () => { 
+    const resetMenu = (username) => { 
         setMenu(fakeMenu.SMALL)
+        syncBothMenus(username, fakeMenu.SMALL)
     }
 
-    return {menu, handleAdd, handleDelete, handleEdit, resetMenu}
+    return {menu, setMenu, handleAdd, handleDelete, handleEdit, resetMenu}
 }

@@ -9,10 +9,12 @@ import OrderContext from "../../../../../context/OrderContext.jsx";
 import { checkIfProductIsClicked } from "./helper.jsx";
 import { EMPTY_PRODUCT, IMAGE_COMING_SOON } from "../../../../../enums/product.jsx";
 import { isEmpty } from "../../../../../utils/array.jsx";
+import Loader from "./Loader.jsx";
 
 
 export default function Menu() {
     const {
+        username,
         menu, 
         isModeAdmin, 
         handleDelete, 
@@ -31,19 +33,21 @@ export default function Menu() {
 
     const handleCardDelete = (event, idProductToDelete) => {
         event.stopPropagation()
-        handleDelete(idProductToDelete)
-        handleDeleteBasketProduct(idProductToDelete)
+        handleDelete(idProductToDelete, username)
+        handleDeleteBasketProduct(idProductToDelete, username)
         idProductToDelete === productSelected.id && setProductSelected(EMPTY_PRODUCT)
     }
 
     const handleAddButton = (event, idProductToAdd) => {
         event.stopPropagation()
-        handleAddToBasket(idProductToAdd)
+        handleAddToBasket(idProductToAdd, username)
     }
+
+    if (menu === undefined) return <Loader/>
 
     if (isEmpty(menu)) {
         if (!isModeAdmin) return <EmptyMenuClient />
-        return <EmptyMenuAdmin onReset={resetMenu} />
+        return <EmptyMenuAdmin onReset={() => resetMenu(username)} />
     }
 
     return (
@@ -58,8 +62,8 @@ export default function Menu() {
                         hasDeleteButton={isModeAdmin}
                         onDelete={(event) => handleCardDelete(event, id)}
                         onClick={() => handleClick(id)}
-                        isHoverable={isModeAdmin}
-                        isSelected={checkIfProductIsClicked(id, productSelected.id)}
+                        $isHoverable={isModeAdmin}
+                        $isSelected={checkIfProductIsClicked(id, productSelected.id)}
                         onAdd={(event) => handleAddButton(event, id)}
                     />
                 )

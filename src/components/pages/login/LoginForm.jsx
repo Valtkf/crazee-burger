@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { useNavigate } from "react-router-dom"
 import styled from 'styled-components'
 import { IoChevronForward } from "react-icons/io5";
@@ -6,29 +6,30 @@ import { BsPersonCircle } from "react-icons/bs";
 import TextInput from '../../reusable-ui/TextInput';
 import Button from '../../reusable-ui/Button';
 import { theme } from '../../theme';
+import { authentificateUser } from '../../../api/user';
+import Welcome from './Welcome';
 
 export default function LoginForm() {      
-    const [inputValue, setInputValue] = useState("")
+    const [username, setUsername] = useState("")
     const navigate = useNavigate()
         
-    const handleSubmit = (event) => {
-        event.preventDefault() 
-        setInputValue("")
-        navigate(`order/${inputValue}`)
+    const handleSubmit = async (event) => {
+        event.preventDefault()
+        authentificateUser(username)
+        setUsername("")
+        navigate(`order/${username}`)
     }
 
     const handleChange = (event) => { 
-    setInputValue(event.target.value)
+    setUsername(event.target.value)
 }
 
 
     return (
     <LoginFormStyled action="submit" onSubmit={handleSubmit}>
-    <h1>Bienvenue chez nous !</h1>
-    <hr />
-    <h2>Connectez-vous</h2>
+        <Welcome />
         <TextInput 
-            value={inputValue} 
+            value={username} 
             onChange={handleChange} 
             placeholder={"Entrez votre prénom"}
             required
@@ -53,22 +54,6 @@ const LoginFormStyled = styled.form`
     padding: 40px ${theme.spacing.lg};
     border-radius: ${theme.borderRadius.round};
     font-family: "Amatic SC", cursive;
-
-    hr {
-        border: 1.5px solid ${theme.colors.loginLine};
-        margin-bottom: ${theme.gridUnit * 5}px;
-    }
-
-    h1 {
-        color: ${theme.colors.white};
-        font-size: ${theme.fonts.size.P5};
-    }
-
-    h2 {
-        margin: 20px 10px 10px;
-        color: ${theme.colors.white};
-        font-size: ${theme.fonts.size.P4};
-    }
 
     .input-login {
         margin: 18px 0;
