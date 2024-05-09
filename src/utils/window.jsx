@@ -1,5 +1,6 @@
-export const refreshPage = () => window.location.reload()
-
+export const refreshPage = () => {
+    window.location.href = window.location.href;
+}
 export const setLocalStorage = (key, value) => {
     localStorage.setItem(key, JSON.stringify(value))
 }
