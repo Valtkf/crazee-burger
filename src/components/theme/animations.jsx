@@ -67,3 +67,24 @@ export const basketAnimation = css`
             transition: 300ms;
         }
     }`
+
+export const menuAnimation = css`
+    .menu-animation-enter {
+        opacity: 0.01;
+        transform: translateX(-120px);
+        &.menu-animation-enter-active {
+            opacity: 1;
+            transform: translateX(0);
+            transition: all 300ms ease-out;
+        }
+    }
+
+    .menu-animation-exit {
+        opacity: 1;
+        transform: translateY(0);
+        &.menu-animation-exit-active {
+            opacity: 0.01;
+            transition: 300ms ease-out;
+        }
+    }
+`
