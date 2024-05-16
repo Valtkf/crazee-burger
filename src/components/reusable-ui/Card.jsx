@@ -3,6 +3,7 @@ import { theme } from "../theme";
 import { TiDelete } from "react-icons/ti";
 import Button from "./Button";
 import PropTypes from 'prop-types';
+import { fadeInFromRight } from "../theme/animations";
 
 export default function Card({ 
     title,
@@ -91,6 +92,7 @@ const CardStyled = styled.div`
             padding: 0;
             border: none;
             background: none;
+            animation: ${fadeInFromRight} 500ms ease-out;
 
             :hover {
                 color: ${theme.colors.redSecondary};
