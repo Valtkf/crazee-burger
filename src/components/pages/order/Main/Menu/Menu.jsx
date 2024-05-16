@@ -10,6 +10,8 @@ import { checkIfProductIsClicked } from "./helper.jsx";
 import { EMPTY_PRODUCT, IMAGE_COMING_SOON } from "../../../../../enums/product.jsx";
 import { isEmpty } from "../../../../../utils/array.jsx";
 import Loader from "./Loader.jsx";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
+import { menuAnimation } from "../../../../theme/animations.jsx";
 
 
 export default function Menu() {
@@ -51,24 +53,26 @@ export default function Menu() {
     }
 
     return (
-        <MenuStyled className="menu">
+        <TransitionGroup component={MenuStyled} className="menu">
             {menu.map(({id , title, imageSource, price }) => {
                 return (
-                    <Card
-                        key={id}
-                        title={title} 
-                        imageSource={imageSource ? imageSource : IMAGE_COMING_SOON} 
-                        leftDescription={formatPrice(price)}
-                        hasDeleteButton={isModeAdmin}
-                        onDelete={(event) => handleCardDelete(event, id)}
-                        onClick={() => handleClick(id)}
-                        $isHoverable={isModeAdmin}
-                        $isSelected={checkIfProductIsClicked(id, productSelected.id)}
-                        onAdd={(event) => handleAddButton(event, id)}
-                    />
+                    <CSSTransition classNames={"menu-animation"} key={id} timeout={300}>
+                        <Card
+                            key={id}
+                            title={title}
+                            imageSource={imageSource ? imageSource : IMAGE_COMING_SOON}
+                            leftDescription={formatPrice(price)}
+                            hasDeleteButton={isModeAdmin}
+                            onDelete={(event) => handleCardDelete(event, id)}
+                            onClick={() => handleClick(id)}
+                            $isHoverable={isModeAdmin}
+                            $isSelected={checkIfProductIsClicked(id, productSelected.id)}
+                            onAdd={(event) => handleAddButton(event, id)}
+                        />
+                    </CSSTransition>
                 )
             })}
-        </MenuStyled>
+        </TransitionGroup>
     )
 }
 
@@ -81,4 +85,6 @@ const MenuStyled = styled.div`
     padding: 50px 50px 280px;
     justify-items: center;
     overflow-y: scroll;
+
+    ${menuAnimation}
 `;

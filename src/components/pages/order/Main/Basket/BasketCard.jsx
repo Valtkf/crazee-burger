@@ -3,6 +3,7 @@ import styled, { css } from "styled-components"
 import { theme } from "../../../../theme/index.jsx"
 import { formatPrice } from '../../../../../utils/maths.jsx'
 import PropTypes from 'prop-types';
+import CasinoEffect from '../../../../reusable-ui/CasinoEffect.jsx';
 
 
 export default function BasketCard({ 
@@ -38,7 +39,7 @@ export default function BasketCard({
                     <span className="price">{formatPrice(price)}</span>
                 </div>
                 <div className="quantity">
-                    <span>x {quantity}</span>
+                    <CasinoEffect count={`x ${quantity}`}/>
                 </div>
             </div>
         </BasketCardStyled>

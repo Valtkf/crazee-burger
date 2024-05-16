@@ -4,6 +4,7 @@ import Header from "../../../../reusable-ui/Header";
 import { calculateTotalToPay, formatPrice } from "../../../../../utils/maths";
 import { useContext } from "react"
 import OrderContext from "../../../../../context/OrderContext";
+import CasinoEffect from "../../../../reusable-ui/CasinoEffect";
 
 export default function Total() {
 
@@ -14,7 +15,7 @@ export default function Total() {
         <Header>
             <TotalStyled>
                 <span className="total">Total</span>
-                <span className="amount">{formatPrice(totalToPay)}</span>
+                <CasinoEffect count={formatPrice(totalToPay)}/>
             </TotalStyled>
         </Header>
     )    
